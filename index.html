@@ -274,8 +274,41 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
     }
+    /* ── APPROACH LAYOUT ── */
+    .approach-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "text  img1"
+        "img2  img1";
+      gap: var(--gap);
+    }
+    .approach-text { grid-area: text; align-self: start; }
+    .approach-img2 {
+      grid-area: img2;
+      display: flex;
+      flex-direction: column;
+    }
+    .approach-img2 img { flex: 1; border-radius: var(--radius-md); }
+    .approach-img1 {
+      grid-area: img1;
+      display: flex;
+      flex-direction: column;
+    }
+    .approach-img1 img { flex: 1; border-radius: var(--radius-md); }
+
     @media (max-width: 720px) {
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .approach-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+          "text"
+          "img1"
+          "img2";
+      }
+      .approach-img1 img, .approach-img2 img { height: auto; }
     }
 
     /* ── STATE MACHINE ── */
@@ -672,19 +705,19 @@
 
           <div class="sub">
             <h4>Approach</h4>
-            <div class="grid-2" style="align-items: start;">
-              <div>
+            <div class="approach-layout">
+              <div class="approach-text">
                 <p>We selected a gravity slide because it has no moving parts beyond the gate servo, making it highly reliable. The slide is 3D printed at a fixed angle; the servo rotates 90° to open and close the gate flap.</p>
                 <p>Pucks are loaded vertically into the magazine before each run. The gate holds them against the slide surface until release.</p>
               </div>
-              <div>
-                <img src="photos/TestingPuckRelease.png" alt="Puck release mechanism during testing" class="site-img" />
+              <div class="approach-img2">
+                <img src="photos/DesignIt1.png" alt="Gravity slide design showing subsystem integration" class="site-img" style="height:100%;width:100%;object-fit:cover;" />
+                <p class="img-cap">Figure 3 — Gravity slide design showing subsystem integration with the chassis and electronics</p>
+              </div>
+              <div class="approach-img1">
+                <img src="photos/TestingPuckRelease.png" alt="Puck release mechanism during testing" class="site-img" style="height:100%;width:100%;object-fit:cover;" />
                 <p class="img-cap">Figure 2 — Puck release mechanism during testing</p>
               </div>
-            </div>
-            <div style="margin-top: 1.25rem;">
-              <img src="photos/DesignIt1.png" alt="Puck release slide design" class="site-img" />
-              <p class="img-cap">Figure 3 — Gravity slide design overview</p>
             </div>
           </div>
 
