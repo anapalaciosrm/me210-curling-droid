@@ -343,6 +343,89 @@
     footer a { color: rgba(255,255,255,.7); text-decoration: none; }
     footer strong { color: rgba(255,255,255,.9); }
 
+    /* ── HERO BUTTONS ── */
+    .hero-buttons {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .hero-btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--cardinal);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 2px 12px rgba(0,0,0,.2);
+    }
+    .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+    .hero-btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,.7);
+    }
+    .hero-btn-outline:hover { background: rgba(255,255,255,.1); }
+
+    /* ── DROID SHOWCASE ── */
+    .droid-section {
+      background: var(--light);
+      border-radius: 14px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid var(--border);
+    }
+    .droid-section h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: var(--cardinal);
+    }
+    .droid-section .photo-grid { margin-top: 1rem; }
+
+    /* ── SLIDE GRID ── */
+    .slide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .slide-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    .slide-card img {
+      width: 100%;
+      display: block;
+      object-fit: contain;
+      background: #f0f0f0;
+      max-height: 260px;
+    }
+    .slide-placeholder {
+      width: 100%;
+      height: 200px;
+      background: #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+    .slide-card .caption {
+      padding: 0.6rem 0.85rem;
+      font-size: 0.82rem;
+      color: var(--mid);
+      border-top: 1px solid var(--border);
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       nav .brand { width: 100%; padding: 0.75rem 0 0; }
@@ -357,6 +440,7 @@
 <nav>
   <div class="nav-inner">
     <div class="brand">ME210 · Winter 2026</div>
+    <a href="#prelim">Prelim Designs</a>
     <a href="#design">Design</a>
     <a href="#schematics">Schematics</a>
     <a href="#photos">Photos</a>
@@ -373,12 +457,155 @@
   <h1>[Your Robot Name Here]</h1>
   <p class="subtitle">The Joy of Curling — 2026 Winter Olympics BOTspiel · Stanford University</p>
   <div class="meta">
-    <span>👤 [Team Member 1]</span>
-    <span>👤 [Team Member 2]</span>
-    <span>👤 [Team Member 3]</span>
-    <span>👤 [Team Member 4]</span>
+    <span>👤 Billy (CS)</span>
+    <span>👤 Carlos (EE)</span>
+    <span>👤 Alex (EE)</span>
+    <span>👤 Ana (MechE)</span>
+  </div>
+  <div class="hero-buttons">
+    <a class="hero-btn" href="#checkoff-droid">Check-off DROID</a>
+    <a class="hero-btn hero-btn-outline" href="#competition-droid">Competition DROID</a>
   </div>
 </header>
+
+<!-- ════════════════════════════ PRELIMINARY DESIGNS ════════════════════════════ -->
+<section id="prelim">
+  <div class="container">
+    <div class="section-label">Checkpoints 1 &amp; 2 · February 17, 2026</div>
+    <h2>Preliminary Designs</h2>
+
+    <p>
+      Team: <strong>Billy</strong> (CS — state machines &amp; code), <strong>Carlos</strong> (EE — puck release mechanism), <strong>Alex</strong> (EE — IR detection &amp; hardware), <strong>Ana</strong> (MechE — 3D printing, CAD &amp; PRL). At our first two checkpoints we locked down the five basic tasks our DROID needed to solve, built a state machine, tested subsystems, and brought CAD to life with a laser-cut duron chassis and 3D-printed parts.
+    </p>
+
+    <!-- ── PRELIMINARY DESIGNS SLIDES ── -->
+    <h3>Preliminary Designs Presentation</h3>
+    <p style="font-size:0.85rem;color:#999;margin-bottom:0.75rem;">
+      Add slides by dropping images in <code>photos/prelim/</code> and replacing each placeholder div with <code>&lt;img src="photos/prelim/slide_01.jpg"&gt;</code>.
+    </p>
+    <div class="slide-grid">
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/prelim_01.jpg" alt="Title slide"> -->
+        <div class="slide-placeholder">[ Title slide ]</div>
+        <div class="caption">Title — Billy, Carlos, Alex, Ana</div>
+      </div>
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/prelim_02.jpg" alt="Basic Tasks"> -->
+        <div class="slide-placeholder">[ Basic Tasks ]</div>
+        <div class="caption">Basic Tasks overview</div>
+      </div>
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/prelim_03.jpg" alt="Parts List"> -->
+        <div class="slide-placeholder">[ Parts List ]</div>
+        <div class="caption">Parts list</div>
+      </div>
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/prelim_04.jpg" alt="Puck Release CAD"> -->
+        <div class="slide-placeholder">[ Puck Release CAD ]</div>
+        <div class="caption">Puck Release — servo-controlled gate</div>
+      </div>
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/prelim_05.jpg" alt="IR Detection Sketch"> -->
+        <div class="slide-placeholder">[ IR Detection Sketch ]</div>
+        <div class="caption">IR Detection — high-pass filter plan</div>
+      </div>
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/prelim_06.jpg" alt="Preliminary Code"> -->
+        <div class="slide-placeholder">[ Preliminary Code ]</div>
+        <div class="caption">Preliminary state machine code</div>
+      </div>
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/prelim_07.jpg" alt="Timeline"> -->
+        <div class="slide-placeholder">[ Timeline ]</div>
+        <div class="caption">Timeline &amp; responsibilities</div>
+      </div>
+    </div>
+
+    <!-- ── BASIC TASKS ── -->
+    <h3>Five Basic Tasks</h3>
+    <div class="card-row">
+      <div class="card blue"><h4>01 — Moving</h4><p>Differential drive with two TT Yellow DC motors + L298N H-bridge. Laser-cut duron chassis, 3D-printed motor brackets.</p></div>
+      <div class="card blue"><h4>02 — Puck Release</h4><p>Servo-controlled gate on an angled slide. Gate held closed, then opened by 9G micro servo to let pucks slide down into the house.</p></div>
+      <div class="card blue"><h4>03 — IR Detection</h4><p>IR phototransistors on left &amp; right of DROID. Both detect signal only when DROID faces forward. High-pass filter (f<sub>c</sub> &lt; 56 kHz) rejects sunlight.</p></div>
+      <div class="card blue"><h4>04 — Line Following</h4><p>Three TCRT5000 IR reflective sensors (left / center / right, ~1 in apart). Center follows the tape; outer two correct heading deviation.</p></div>
+      <div class="card blue"><h4>05 — Photodetection</h4><p>Op-amp amplifier + LM339 comparator circuit (from Lab 1/2) converts phototransistor signal to a clean digital HIGH/LOW for the Arduino.</p></div>
+    </div>
+
+    <!-- ── STATE MACHINE ── -->
+    <h3>State Machine</h3>
+    <div class="card-row">
+      <div class="card"><h4>IDLE</h4><p>Waiting at launch zone. Motors off, gate closed. Transitions on StartSignal (toggle switch).</p></div>
+      <div class="card"><h4>SCANNING</h4><p>Rotate CCW. Read left &amp; right IR detectors. When both detect beacon signal → SEEKING_TAPE.</p></div>
+      <div class="card"><h4>SEEKING_TAPE</h4><p>Drive forward. Adjust heading based on IR balance until center tape sensor triggers → LINE_FOLLOWING.</p></div>
+      <div class="card"><h4>LINE_FOLLOWING</h4><p>Follow black center tape. Correct heading with outer sensors. Front sensor hits hog-line tape → STOP_AT_LINE.</p></div>
+      <div class="card"><h4>STOP_AT_LINE</h4><p>Stop motors. Start settle timer. On timer expiry → RELEASING.</p></div>
+      <div class="card"><h4>RELEASING</h4><p>Open gate motor. Wait for pucks to slide. On GateFullyOpen → DONE.</p></div>
+      <div class="card green"><h4>DONE</h4><p>Gate closed. All motors off. Return to base logic begins here.</p></div>
+    </div>
+
+    <div class="embed-box" style="min-height:280px;">
+      <!-- <img src="photos/prelim/state_diagram.jpg" alt="State diagram sketch"> -->
+      <span>[ Insert state diagram sketch / photo here ]</span>
+    </div>
+
+    <!-- ── CHECKPOINT 2 ── -->
+    <h3>Checkpoint 2 — Progress Report (Feb 17)</h3>
+
+    <h3 style="font-size:1rem;">Puck Release: Testing &amp; Iterating</h3>
+    <p>
+      We iterated on slide angles until all pucks landed within the scoring zone. Our 9G servo could not reliably hold back 3 pucks, so we settled on releasing 2 at a time. We also explored alternative launcher concepts: a <strong>carousel dispenser</strong>, a <strong>spring/rubber-band launcher</strong>, and a <strong>push mechanism</strong>.
+    </p>
+    <div class="slide-grid">
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/cp2_puck_test.jpg" alt="Puck release testing on field"> -->
+        <div class="slide-placeholder">[ Puck release testing on field ]</div>
+        <div class="caption">Testing slide angle on the curling sheet</div>
+      </div>
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/cp2_rough_droid.jpg" alt="Rough DROID prototype"> -->
+        <div class="slide-placeholder">[ Rough DROID prototype ]</div>
+        <div class="caption">Early DROID prototype with 3D-printed slide</div>
+      </div>
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/cp2_carousel.jpg" alt="Carousel concept"> -->
+        <div class="slide-placeholder">[ Carousel dispenser concept ]</div>
+        <div class="caption">Alternative concept — carousel dispenser</div>
+      </div>
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/cp2_push.jpg" alt="Push mechanism concept"> -->
+        <div class="slide-placeholder">[ Push mechanism concept ]</div>
+        <div class="caption">Alternative concept — push/scotch-yoke mechanism</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:1rem;">Bringing CAD to Life</h3>
+    <p>
+      We 3D-printed the slide and motor brackets and laser-cut the chassis from Duron. This let us physically validate motor placement, battery location, and overall balance — the prototype revealed the DROID was front-heavy, informing the final chassis redesign.
+    </p>
+    <div class="slide-grid">
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/cad_render.jpg" alt="Fusion 360 CAD render"> -->
+        <div class="slide-placeholder">[ Fusion 360 CAD render ]</div>
+        <div class="caption">Full Fusion 360 model</div>
+      </div>
+      <div class="slide-card">
+        <!-- <img src="photos/prelim/rough_droid_annotated.jpg" alt="Annotated rough droid"> -->
+        <div class="slide-placeholder">[ Annotated rough DROID photo ]</div>
+        <div class="caption">Rough DROID — annotated notes from testing</div>
+      </div>
+    </div>
+
+    <!-- ── TEAM & TIMELINE ── -->
+    <h3>Team &amp; Timeline</h3>
+    <div class="card-row">
+      <div class="card"><h4>Alex — EE</h4><p>IR detection circuit, hardware wiring</p></div>
+      <div class="card"><h4>Ana — MechE</h4><p>3D printing, CAD (Fusion 360), PRL fabrication</p></div>
+      <div class="card"><h4>Carlos — EE</h4><p>Puck release mechanism design &amp; testing</p></div>
+      <div class="card"><h4>Billy — CS</h4><p>Finite state machine, Arduino code</p></div>
+    </div>
+
+  </div>
+</section>
 
 <!-- ════════════════════════════ DESIGN ════════════════════════════ -->
 <section id="design">
@@ -400,19 +627,19 @@
     <div class="card-row">
       <div class="card">
         <h4>Locomotion</h4>
-        <p>[e.g., Differential drive with two DC motors and a rear caster]</p>
+        <p>Differential drive — two TT Yellow DC motors, L298N H-bridge, laser-cut Duron chassis, 3D-printed brackets</p>
       </div>
       <div class="card">
         <h4>Sensing</h4>
-        <p>[e.g., IR line sensors, ultrasonic rangefinder, bump switches]</p>
+        <p>IR phototransistors (left + right) for beacon homing; 3× TCRT5000 IR reflective sensors for line following</p>
       </div>
       <div class="card">
         <h4>Actuation</h4>
-        <p>[e.g., Servo-driven arm for token pickup, solenoid for launch]</p>
+        <p>9G micro servo holds and releases gate on angled slide; pucks slide by gravity into the house</p>
       </div>
       <div class="card">
         <h4>Control Strategy</h4>
-        <p>[e.g., State machine with 6 states, event-driven transitions]</p>
+        <p>7-state event-driven state machine on Arduino Uno: IDLE → SCANNING → SEEKING_TAPE → LINE_FOLLOWING → STOP_AT_LINE → RELEASING → DONE</p>
       </div>
     </div>
 
@@ -517,6 +744,58 @@
 
     <p>Photos of the finished robot, subsystems, and in-competition action.</p>
 
+    <!-- ── CHECK-OFF DROID ── -->
+    <div class="droid-section" id="checkoff-droid">
+      <h3>Check-off DROID</h3>
+      <p>The DROID as it looked for the Beat the Brick check-off on March 6. This is the version that first demonstrated minimum functionality — scanning, line following, and puck release.</p>
+      <div class="photo-grid">
+        <div class="photo-card">
+          <!-- <img src="photos/checkoff_front.jpg" alt="Check-off DROID front"> -->
+          <div class="photo-placeholder">[ Check-off DROID — front ]</div>
+          <div class="caption">Front view — check-off configuration</div>
+        </div>
+        <div class="photo-card">
+          <!-- <img src="photos/checkoff_side.jpg" alt="Check-off DROID side"> -->
+          <div class="photo-placeholder">[ Check-off DROID — side ]</div>
+          <div class="caption">Side view</div>
+        </div>
+        <div class="photo-card">
+          <!-- <img src="photos/checkoff_action.jpg" alt="Check-off run"> -->
+          <div class="photo-placeholder">[ Check-off run in action ]</div>
+          <div class="caption">Beat the Brick — check-off run</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COMPETITION DROID ── -->
+    <div class="droid-section" id="competition-droid">
+      <h3>Competition DROID</h3>
+      <p>The final competition-ready DROID at the BOTspiel on March 8 in the Atrium of Building 550.</p>
+      <div class="photo-grid">
+        <div class="photo-card">
+          <!-- <img src="photos/comp_front.jpg" alt="Competition DROID front"> -->
+          <div class="photo-placeholder">[ Competition DROID — front ]</div>
+          <div class="caption">Front view — competition configuration</div>
+        </div>
+        <div class="photo-card">
+          <!-- <img src="photos/comp_side.jpg" alt="Competition DROID side"> -->
+          <div class="photo-placeholder">[ Competition DROID — side ]</div>
+          <div class="caption">Side view</div>
+        </div>
+        <div class="photo-card">
+          <!-- <img src="photos/comp_action.jpg" alt="Competition action"> -->
+          <div class="photo-placeholder">[ Competition day — in action ]</div>
+          <div class="caption">BOTspiel — March 8, Building 550</div>
+        </div>
+        <div class="photo-card">
+          <!-- <img src="photos/comp_team.jpg" alt="Team at competition"> -->
+          <div class="photo-placeholder">[ Team at competition ]</div>
+          <div class="caption">Billy, Carlos, Alex, Ana at the BOTspiel</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Additional Photos</h3>
     <div class="photo-grid">
 
       <div class="photo-card">
@@ -628,70 +907,126 @@
           <!-- REPLACE each row with your actual parts -->
           <tr>
             <td>1</td>
-            <td>Arduino Mega 2560</td>
-            <td>Main microcontroller</td>
+            <td>Arduino Uno</td>
+            <td>Main microcontroller — state machine code (existing kit)</td>
             <td>1</td>
-            <td>$38.00</td>
-            <td>$38.00</td>
+            <td>kit</td>
+            <td>—</td>
           </tr>
           <tr>
             <td>2</td>
-            <td>[Motor / Motor Driver]</td>
-            <td>[e.g., L298N dual H-bridge]</td>
-            <td>1</td>
+            <td>TT Yellow DC Motors</td>
+            <td>Main drive train — Amazon/DFRobot</td>
+            <td>2</td>
             <td>$[X.XX]</td>
             <td>$[X.XX]</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>[DC Motors]</td>
-            <td>[Specs — RPM, stall torque]</td>
+            <td>L298N Motor Driver</td>
+            <td>H-bridge for motor speed &amp; direction (existing kit)</td>
+            <td>1</td>
+            <td>kit</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>9G Micro Servo</td>
+            <td>Gate actuation for puck release (existing kit)</td>
+            <td>1</td>
+            <td>kit</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>TCRT5000 IR Reflective Sensor</td>
+            <td>Line following — detects hog line &amp; start zones (lab, $0.83 × 3)</td>
+            <td>3</td>
+            <td>$0.83</td>
+            <td>$2.49</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>TSOP34156 IR Receiver (56 kHz)</td>
+            <td>Detects IR beacons from across the field — Newark</td>
             <td>2</td>
             <td>$[X.XX]</td>
             <td>$[X.XX]</td>
           </tr>
           <tr>
-            <td>4</td>
-            <td>[Servo(s)]</td>
-            <td>[Application]</td>
-            <td>[N]</td>
-            <td>$[X.XX]</td>
-            <td>$[X.XX]</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>[IR Sensors / Line Sensors]</td>
-            <td>[Type, count]</td>
-            <td>[N]</td>
-            <td>$[X.XX]</td>
-            <td>$[X.XX]</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>[Battery]</td>
-            <td>[Voltage, capacity]</td>
+            <td>7</td>
+            <td>26-020 SPST Toggle Switch</td>
+            <td>Emergency kill switch (required) — Newark</td>
             <td>1</td>
             <td>$[X.XX]</td>
             <td>$[X.XX]</td>
           </tr>
           <tr>
-            <td>7</td>
-            <td>[Chassis material]</td>
-            <td>[e.g., 3mm acrylic sheet, aluminum extrusion]</td>
+            <td>8</td>
+            <td>7.2V NiMH Battery Pack</td>
+            <td>Main power (existing kit — not counted toward budget)</td>
+            <td>2</td>
+            <td>kit</td>
             <td>—</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>LM339 Quad Comparator</td>
+            <td>Processes IR phototransistor &amp; line sensor signals (lab)</td>
+            <td>1</td>
+            <td>lab</td>
             <td>—</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Resistors (10kΩ, 220Ω, 1MΩ, 83.33kΩ)</td>
+            <td>Pull-ups, current limiting, hysteresis, comparator dividers (lab)</td>
+            <td>~15</td>
+            <td>lab</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>0.1 µF Capacitor</td>
+            <td>Decoupling / IR sensor glitch prevention (lab)</td>
+            <td>2</td>
+            <td>lab</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>10 kΩ Potentiometer</td>
+            <td>Sensitivity threshold adjustment for line sensors (lab)</td>
+            <td>1</td>
+            <td>lab</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>Duron sheet (chassis)</td>
+            <td>Laser-cut chassis base — PRL/Lab64</td>
+            <td>1</td>
+            <td>$[X.XX]</td>
             <td>$[X.XX]</td>
           </tr>
           <tr>
-            <td>8</td>
-            <td>[Add remaining parts...]</td>
+            <td>14</td>
+            <td>3D-printed parts (slide, brackets)</td>
+            <td>Puck slide + motor brackets — PRL printers</td>
+            <td>—</td>
+            <td>$[X.XX]</td>
+            <td>$[X.XX]</td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td>[Add any remaining purchased parts]</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
           <tr class="total-row">
-            <td colspan="5" style="text-align:right;">Total Project Cost</td>
+            <td colspan="5" style="text-align:right;">Total Purchased Cost (≤ $200 limit)</td>
             <td>$[TOTAL]</td>
           </tr>
         </tbody>
@@ -916,7 +1251,7 @@
 <!-- ════════════════════════════ FOOTER ════════════════════════════ -->
 <footer>
   <p><strong>[Team Name]</strong> &nbsp;·&nbsp; ME210 — Introduction to Mechatronics &nbsp;·&nbsp; Stanford University, Winter 2026</p>
-  <p style="margin-top:0.5rem;">[Team Member 1] &nbsp;·&nbsp; [Team Member 2] &nbsp;·&nbsp; [Team Member 3] &nbsp;·&nbsp; [Team Member 4]</p>
+  <p style="margin-top:0.5rem;">Billy &nbsp;·&nbsp; Carlos &nbsp;·&nbsp; Alex &nbsp;·&nbsp; Ana</p>
 </footer>
 
 </body>
