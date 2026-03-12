@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ME210 — The Joy of Curling · [Team Name]</title>
+  <style>
+    :root {
+      --cardinal: #8C1515;
+      --dark:     #1a1a1a;
+      --mid:      #444;
+      --light:    #f5f5f5;
+      --accent:   #B83A4B;
+      --border:   #ddd;
+      --code-bg:  #2b2b2b;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #fff;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--cardinal);
+      color: #fff;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    }
+    nav .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 1.5rem;
+      flex-wrap: wrap;
+    }
+    nav .brand {
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.9rem 1.5rem 0.9rem 0;
+      white-space: nowrap;
+      letter-spacing: 0.03em;
+    }
+    nav a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      padding: 0.9rem 0.75rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+      white-space: nowrap;
+    }
+    nav a:hover { color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--cardinal) 0%, #5a0a0a 100%);
+      color: #fff;
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+    }
+    .hero .course-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .hero .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero .meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      opacity: 0.75;
+    }
+    .hero .meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cardinal);
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 2rem 0 0.75rem;
+    }
+    p { margin-bottom: 1rem; color: var(--mid); }
+    ul, ol { margin: 0.5rem 0 1rem 1.5rem; color: var(--mid); }
+    li { margin-bottom: 0.35rem; }
+
+    /* ── PLACEHOLDER BOXES ── */
+    .placeholder {
+      background: var(--light);
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      margin: 1.5rem 0;
+    }
+    .placeholder.tall { min-height: 220px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; }
+    .placeholder strong { display: block; font-size: 1.05rem; font-style: normal; color: #555; }
+
+    /* ── PHOTO GRID ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .photo-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--light);
+    }
+    .photo-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-card .caption {
+      padding: 0.6rem 0.85rem;
+      font-size: 0.82rem;
+      color: var(--mid);
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 200px;
+      background: #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+
+    /* ── SCHEMATIC / DRAWING EMBED ── */
+    .embed-box {
+      width: 100%;
+      min-height: 350px;
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-style: italic;
+      margin: 1.5rem 0;
+      overflow: hidden;
+    }
+    .embed-box img {
+      max-width: 100%;
+      max-height: 600px;
+      border-radius: 10px;
+    }
+
+    /* ── PARTS TABLE ── */
+    .parts-table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th {
+      background: var(--cardinal);
+      color: #fff;
+      padding: 0.65rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--mid);
+    }
+    tr:nth-child(even) td { background: var(--light); }
+    tr:last-child td { border-bottom: none; }
+    .total-row td { font-weight: 700; color: var(--dark); background: #f0f0f0 !important; }
+
+    /* ── TIMELINE ── */
+    .timeline { margin: 1.5rem 0; }
+    .tl-item {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+      align-items: flex-start;
+    }
+    .tl-dot {
+      flex-shrink: 0;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--cardinal);
+      margin-top: 0.45rem;
+      position: relative;
+    }
+    .tl-dot::after {
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: calc(100% + 20px);
+      background: #e0e0e0;
+    }
+    .tl-item:last-child .tl-dot::after { display: none; }
+    .tl-date {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--cardinal);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+    .tl-title { font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+    .tl-body { font-size: 0.92rem; color: var(--mid); }
+
+    /* ── CALLOUT CARDS ── */
+    .card-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .card {
+      border-radius: 10px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--cardinal);
+      background: var(--light);
+    }
+    .card.green  { border-color: #2e7d32; }
+    .card.yellow { border-color: #f59e0b; }
+    .card.red    { border-color: #c0392b; }
+    .card.blue   { border-color: #1565c0; }
+    .card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--dark); }
+    .card p  { font-size: 0.88rem; margin-bottom: 0; color: var(--mid); }
+
+    /* ── CODE BLOCK ── */
+    .code-block {
+      background: var(--code-bg);
+      color: #f8f8f2;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      font-family: 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      margin: 1.25rem 0;
+    }
+    .code-block .comment { color: #75715e; }
+    .code-block .keyword { color: #66d9e8; }
+    .code-block .string  { color: #a6e22e; }
+    .code-block .num     { color: #ae81ff; }
+
+    /* ── CALLOUT (tip/warning) ── */
+    .tip {
+      background: #e8f5e9;
+      border-left: 4px solid #2e7d32;
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      font-size: 0.92rem;
+      color: #1b5e20;
+    }
+    .warning {
+      background: #fff8e1;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      font-size: 0.92rem;
+      color: #6d4c00;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.55);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.85rem;
+    }
+    footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+    footer strong { color: rgba(255,255,255,.9); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav .brand { width: 100%; padding: 0.75rem 0 0; }
+      nav a { padding: 0.55rem 0.5rem; font-size: 0.75rem; }
+      .hero { padding: 3rem 1rem 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════ NAV ════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <div class="brand">ME210 · Winter 2026</div>
+    <a href="#design">Design</a>
+    <a href="#schematics">Schematics</a>
+    <a href="#photos">Photos</a>
+    <a href="#calculations">Calculations</a>
+    <a href="#parts">Parts &amp; Cost</a>
+    <a href="#process">Process</a>
+    <a href="#reflections">Reflections</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════ HERO ════════════════════════════ -->
+<header class="hero">
+  <div class="course-tag">ME210 — Introduction to Mechatronics · Winter 2026</div>
+  <h1>[Your Robot Name Here]</h1>
+  <p class="subtitle">The Joy of Curling — 2026 Winter Olympics BOTspiel · Stanford University</p>
+  <div class="meta">
+    <span>👤 [Team Member 1]</span>
+    <span>👤 [Team Member 2]</span>
+    <span>👤 [Team Member 3]</span>
+    <span>👤 [Team Member 4]</span>
+  </div>
+</header>
+
+<!-- ════════════════════════════ DESIGN ════════════════════════════ -->
+<section id="design">
+  <div class="container">
+    <div class="section-label">Initial Design Review</div>
+    <h2>Selected Design Concept</h2>
+
+    <p>
+      Our DROID (Dynamic Rolling Olympian in Disguise) was designed to autonomously play a head-to-head game of curling on a 4 ft × 16 ft particle board arena. Starting from a 13" × 13" zone at one end, the robot must locate the house (bull's-eye) at the center seam of the field using IR beacons (909 Hz, 10" above surface), then slide up to 8 steel pucks (2.08" diameter, 8 oz) as close to the button as possible within a 2-minute match.
+      <!-- ADD: any team-specific flavor about your overall strategy here -->
+    </p>
+
+    <h3>Design Concept Overview</h3>
+    <p>
+      <!-- REPLACE: Describe the design you selected at the Initial Design Review — locomotion, sensing, actuation strategy -->
+      [Explain the concept you selected. Why did you choose this approach over alternatives? What were the core sub-systems — locomotion, IR beacon homing, tape/line sensing, puck release mechanism, return-to-base logic?]
+    </p>
+
+    <div class="card-row">
+      <div class="card">
+        <h4>Locomotion</h4>
+        <p>[e.g., Differential drive with two DC motors and a rear caster]</p>
+      </div>
+      <div class="card">
+        <h4>Sensing</h4>
+        <p>[e.g., IR line sensors, ultrasonic rangefinder, bump switches]</p>
+      </div>
+      <div class="card">
+        <h4>Actuation</h4>
+        <p>[e.g., Servo-driven arm for token pickup, solenoid for launch]</p>
+      </div>
+      <div class="card">
+        <h4>Control Strategy</h4>
+        <p>[e.g., State machine with 6 states, event-driven transitions]</p>
+      </div>
+    </div>
+
+    <h3>Design Alternatives Considered</h3>
+    <p>
+      <!-- REPLACE: What other approaches did you consider and why did you reject them? -->
+      [Briefly list 2-3 alternative design directions you considered at the design review and why you ruled them out — feasibility, complexity, time, resources.]
+    </p>
+
+    <div class="embed-box">
+      <!-- REPLACE img src with your concept sketch or CAD render -->
+      <!-- <img src="photos/concept_sketch.jpg" alt="Initial design concept sketch"> -->
+      <span>[ Insert concept sketch / CAD render / design review slide here ]</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ SCHEMATICS ════════════════════════════ -->
+<section id="schematics">
+  <div class="container">
+    <div class="section-label">Electrical</div>
+    <h2>Schematics &amp; Wiring</h2>
+
+    <p>
+      <!-- REPLACE: Brief description of the electrical architecture -->
+      [Summarize your electrical system: power supply, microcontrollers, motor drivers, sensor interfaces, etc.]
+    </p>
+
+    <h3>Overall Wiring Schematic</h3>
+    <div class="embed-box">
+      <!-- REPLACE: <img src="photos/schematic_full.png" alt="Full wiring schematic"> -->
+      <span>[ Insert full wiring schematic (PNG/JPG/PDF screenshot) ]</span>
+    </div>
+
+    <h3>Power Distribution</h3>
+    <p>
+      <!-- REPLACE: Describe your power architecture — battery voltage, regulators, logic vs. motor power, etc. -->
+      [e.g., 7.4V 2S LiPo → L298N motor driver for motors; 5V regulated line for Arduino and sensors via onboard 5V pin / external regulator.]
+    </p>
+
+    <h3>Motor Driver Circuit</h3>
+    <div class="embed-box">
+      <!-- REPLACE: <img src="photos/schematic_motor.png" alt="Motor driver schematic"> -->
+      <span>[ Insert motor driver schematic detail ]</span>
+    </div>
+
+    <h3>Sensor Interface</h3>
+    <div class="embed-box">
+      <!-- REPLACE: <img src="photos/schematic_sensors.png" alt="Sensor wiring diagram"> -->
+      <span>[ Insert sensor wiring diagram ]</span>
+    </div>
+
+    <div class="warning">
+      <strong>Lesson learned:</strong> [e.g., "We accidentally shared ground between the motor power rail and logic ground without a common reference — this caused erratic sensor readings. Always connect grounds!"]
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ DRAWINGS / CAD ════════════════════════════ -->
+<section id="drawings">
+  <div class="container">
+    <div class="section-label">Mechanical</div>
+    <h2>Mechanical Drawings &amp; CAD</h2>
+
+    <p>
+      <!-- REPLACE: Describe the physical structure, materials, fabrication methods -->
+      [Describe the chassis, frame material, key fabricated parts, and any 3D-printed or laser-cut components.]
+    </p>
+
+    <h3>Chassis / Overall Assembly</h3>
+    <div class="embed-box">
+      <!-- REPLACE: <img src="photos/cad_assembly.png" alt="CAD assembly drawing"> -->
+      <span>[ Insert CAD assembly drawing or dimensioned sketch ]</span>
+    </div>
+
+    <h3>Custom Parts</h3>
+    <div class="photo-grid">
+      <div class="photo-card">
+        <!-- REPLACE: <img src="photos/part_arm.jpg" alt="Token pickup arm"> -->
+        <div class="photo-placeholder">[ Photo / drawing of custom part 1 ]</div>
+        <div class="caption">[Part name and brief description]</div>
+      </div>
+      <div class="photo-card">
+        <!-- REPLACE: <img src="photos/part_chassis.jpg" alt="Chassis base plate"> -->
+        <div class="photo-placeholder">[ Photo / drawing of custom part 2 ]</div>
+        <div class="caption">[Part name and brief description]</div>
+      </div>
+      <div class="photo-card">
+        <!-- REPLACE: <img src="photos/part_bracket.jpg" alt="Motor bracket"> -->
+        <div class="photo-placeholder">[ Photo / drawing of custom part 3 ]</div>
+        <div class="caption">[Part name and brief description]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ PHOTOS ════════════════════════════ -->
+<section id="photos">
+  <div class="container">
+    <div class="section-label">Gallery</div>
+    <h2>Robot Photos</h2>
+
+    <p>Photos of the finished robot, subsystems, and in-competition action.</p>
+
+    <div class="photo-grid">
+
+      <div class="photo-card">
+        <!-- REPLACE: <img src="photos/robot_front.jpg" alt="Robot front view"> -->
+        <div class="photo-placeholder">[ Front view ]</div>
+        <div class="caption">Front view — final robot</div>
+      </div>
+
+      <div class="photo-card">
+        <!-- REPLACE: <img src="photos/robot_side.jpg" alt="Robot side view"> -->
+        <div class="photo-placeholder">[ Side view ]</div>
+        <div class="caption">Side view</div>
+      </div>
+
+      <div class="photo-card">
+        <!-- REPLACE: <img src="photos/robot_top.jpg" alt="Robot top view"> -->
+        <div class="photo-placeholder">[ Top view ]</div>
+        <div class="caption">Top view — layout of electronics</div>
+      </div>
+
+      <div class="photo-card">
+        <!-- REPLACE: <img src="photos/electronics_inside.jpg" alt="Electronics close-up"> -->
+        <div class="photo-placeholder">[ Electronics close-up ]</div>
+        <div class="caption">Electronics bay</div>
+      </div>
+
+      <div class="photo-card">
+        <!-- REPLACE: <img src="photos/competition_1.jpg" alt="Competition run"> -->
+        <div class="photo-placeholder">[ Competition / test run 1 ]</div>
+        <div class="caption">Competition day — [describe moment]</div>
+      </div>
+
+      <div class="photo-card">
+        <!-- REPLACE: <img src="photos/team_photo.jpg" alt="Team photo"> -->
+        <div class="photo-placeholder">[ Team photo ]</div>
+        <div class="caption">The team</div>
+      </div>
+
+    </div>
+
+    <p style="font-size:0.85rem; color:#999; margin-top:0.5rem;">
+      To add photos: drop image files in the <code>photos/</code> folder alongside this HTML file, then replace the placeholder <code>&lt;div&gt;</code> elements with <code>&lt;img src="photos/filename.jpg"&gt;</code>.
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════ CALCULATIONS ════════════════════════════ -->
+<section id="calculations">
+  <div class="container">
+    <div class="section-label">Engineering Analysis</div>
+    <h2>Key Calculations</h2>
+
+    <p>
+      <!-- REPLACE: Overview of what you needed to calculate -->
+      [Brief intro — what design decisions required quantitative analysis? Motor sizing? Gear ratio? Torque? Battery life estimation?]
+    </p>
+
+    <h3>Motor &amp; Torque Sizing</h3>
+    <p>
+      <!-- REPLACE: Your motor selection rationale with numbers -->
+      [e.g., "Required driving torque = F × r_wheel. Estimated robot mass = 1.2 kg, friction coefficient μ ≈ 0.4, so F_drive ≈ 4.7 N. At r = 35 mm, T_required = 0.165 N·m per motor. Selected motor stall torque = 0.55 N·m with 30% safety margin."]
+    </p>
+
+    <div class="embed-box" style="min-height:180px;">
+      <!-- REPLACE: <img src="photos/calc_torque.png" alt="Torque calculation"> -->
+      <span>[ Insert handwritten or typed calculation scan / screenshot ]</span>
+    </div>
+
+    <h3>Gear Ratio / Speed</h3>
+    <p>
+      <!-- REPLACE -->
+      [e.g., "Target speed ≈ 0.4 m/s. With 70 mm wheels and 150 RPM motor output, v = ω × r ≈ 0.55 m/s — within acceptable range."]
+    </p>
+
+    <h3>Battery Life Estimate</h3>
+    <p>
+      <!-- REPLACE -->
+      [e.g., "Two motors at stall draw ~1.2 A each; idle draw ~200 mA each. Arduino + sensors ≈ 0.15 A. At 50% duty cycle peak: I_avg ≈ 1.55 A. 2000 mAh battery → ~1.3 h runtime — sufficient for competition rounds."]
+    </p>
+
+    <h3>[Any Other Relevant Calculation]</h3>
+    <p><!-- REPLACE -->[e.g., sensor range, servo torque needed, structural load, etc.]</p>
+
+    <div class="embed-box" style="min-height:180px;">
+      <span>[ Insert additional calculation sheet / diagram ]</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ PARTS LIST ════════════════════════════ -->
+<section id="parts">
+  <div class="container">
+    <div class="section-label">Bill of Materials</div>
+    <h2>Parts List &amp; Cost</h2>
+
+    <div class="parts-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Component</th>
+            <th>Description / Notes</th>
+            <th>Qty</th>
+            <th>Unit Cost</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- REPLACE each row with your actual parts -->
+          <tr>
+            <td>1</td>
+            <td>Arduino Mega 2560</td>
+            <td>Main microcontroller</td>
+            <td>1</td>
+            <td>$38.00</td>
+            <td>$38.00</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>[Motor / Motor Driver]</td>
+            <td>[e.g., L298N dual H-bridge]</td>
+            <td>1</td>
+            <td>$[X.XX]</td>
+            <td>$[X.XX]</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>[DC Motors]</td>
+            <td>[Specs — RPM, stall torque]</td>
+            <td>2</td>
+            <td>$[X.XX]</td>
+            <td>$[X.XX]</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>[Servo(s)]</td>
+            <td>[Application]</td>
+            <td>[N]</td>
+            <td>$[X.XX]</td>
+            <td>$[X.XX]</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>[IR Sensors / Line Sensors]</td>
+            <td>[Type, count]</td>
+            <td>[N]</td>
+            <td>$[X.XX]</td>
+            <td>$[X.XX]</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>[Battery]</td>
+            <td>[Voltage, capacity]</td>
+            <td>1</td>
+            <td>$[X.XX]</td>
+            <td>$[X.XX]</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>[Chassis material]</td>
+            <td>[e.g., 3mm acrylic sheet, aluminum extrusion]</td>
+            <td>—</td>
+            <td>—</td>
+            <td>$[X.XX]</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>[Add remaining parts...]</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="5" style="text-align:right;">Total Project Cost</td>
+            <td>$[TOTAL]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ PROCESS ════════════════════════════ -->
+<section id="process">
+  <div class="container">
+    <div class="section-label">Project Process</div>
+    <h2>Process, Milestones &amp; MVP Management</h2>
+
+    <h3>Project Timeline</h3>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div>
+          <div class="tl-date">Week [N] — [Date]</div>
+          <div class="tl-title">Initial Design Review</div>
+          <div class="tl-body">Selected design concept. Defined subsystems and assigned responsibilities. [Add detail.]</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div>
+          <div class="tl-date">Week [N] — [Date]</div>
+          <div class="tl-title">Chassis Fabrication Complete</div>
+          <div class="tl-body">[What was done, what changed from original plan, any early surprises.]</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div>
+          <div class="tl-date">Week [N] — [Date]</div>
+          <div class="tl-title">Electronics Integrated — First Drive Test</div>
+          <div class="tl-body">[Describe first successful test. What worked? What immediately broke?]</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div>
+          <div class="tl-date">Week [N] — [Date]</div>
+          <div class="tl-title">State Machine Running End-to-End</div>
+          <div class="tl-body">[When did autonomous behavior first work? What was the key breakthrough?]</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div>
+          <div class="tl-date">Week [N] — [Date]</div>
+          <div class="tl-title">Final Tune &amp; Competition Day</div>
+          <div class="tl-body">[Last-minute fixes, competition result, memorable moment.]</div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3>MVP vs. Feature List</h3>
+    <p>
+      <!-- REPLACE: Describe how you managed scope -->
+      [Explain the full "wishlist" of features you identified early on, what you defined as the Minimum Viable Product, and how you made trade-off decisions as deadlines approached.]
+    </p>
+
+    <div class="card-row">
+      <div class="card green">
+        <h4>✓ MVP — Achieved</h4>
+        <p>
+          [List the minimum required behaviors your robot achieved]<br>
+          · [MVP feature 1]<br>
+          · [MVP feature 2]<br>
+          · [MVP feature 3]
+        </p>
+      </div>
+      <div class="card yellow">
+        <h4>⚡ Stretch Goals — Attempted</h4>
+        <p>
+          [Features you tried but only partially achieved]<br>
+          · [Stretch feature 1]<br>
+          · [Stretch feature 2]
+        </p>
+      </div>
+      <div class="card red">
+        <h4>✗ Cut from Scope</h4>
+        <p>
+          [Features that were cut — and why]<br>
+          · [Cut feature 1] — [why]<br>
+          · [Cut feature 2] — [why]
+        </p>
+      </div>
+    </div>
+
+    <h3>Team &amp; Resource Management</h3>
+    <p>
+      <!-- REPLACE -->
+      [How did you divide work? Did everyone own a subsystem? How did you coordinate integration? Any tools — Slack, shared repo, shared doc?]
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════ REFLECTIONS ════════════════════════════ -->
+<section id="reflections">
+  <div class="container">
+    <div class="section-label">Reflections</div>
+    <h2>What We Learned — Advice for Next Year</h2>
+
+    <p>
+      <!-- REPLACE: Intro -->
+      [A sentence or two setting up this section — what kind of year/experience this was and your general takeaway.]
+    </p>
+
+    <h3>What Worked Well</h3>
+    <div class="card-row">
+      <div class="card green">
+        <h4>[Subsystem / Decision]</h4>
+        <p>[Why it worked well and what made it successful.]</p>
+      </div>
+      <div class="card green">
+        <h4>[Another win]</h4>
+        <p>[Describe.]</p>
+      </div>
+      <div class="card green">
+        <h4>[Another win]</h4>
+        <p>[Describe.]</p>
+      </div>
+    </div>
+
+    <h3>Integration Challenges</h3>
+    <p>
+      <!-- REPLACE -->
+      [Where did things break down when you tried to put subsystems together? Mechanical-electrical interference? Software timing issues? Sensor noise? Describe the challenge and how you resolved it.]
+    </p>
+
+    <div class="card-row">
+      <div class="card red">
+        <h4>[Challenge 1]</h4>
+        <p>[What happened and what you did about it.]</p>
+      </div>
+      <div class="card red">
+        <h4>[Challenge 2]</h4>
+        <p>[What happened and what you did about it.]</p>
+      </div>
+    </div>
+
+    <h3>Code Tricks &amp; Arduino/Library Fixes</h3>
+    <p>
+      <!-- REPLACE: Intro to your code learnings -->
+      [Describe any bugs you hit with Arduino libraries, timing issues, interrupt conflicts, memory constraints, etc., and the tricks you used to fix them.]
+    </p>
+
+    <!-- EXAMPLE CODE BLOCK — replace with your own snippet -->
+    <div class="code-block">
+<span class="comment">// TIP: millis()-based timing instead of delay() keeps the state machine responsive</span>
+<span class="keyword">unsigned long</span> lastSensorCheck = <span class="num">0</span>;
+<span class="keyword">const unsigned long</span> SENSOR_INTERVAL = <span class="num">20</span>; <span class="comment">// ms</span>
+
+<span class="keyword">void</span> loop() {
+  <span class="keyword">if</span> (millis() - lastSensorCheck >= SENSOR_INTERVAL) {
+    lastSensorCheck = millis();
+    readSensors();
+  }
+  runStateMachine();
+}
+    </div>
+
+    <div class="tip">
+      <strong>Tip for future teams:</strong> [e.g., "Never use delay() inside your main loop — it blocks everything. Use millis() for all timing. We lost two days debugging phantom sensor behavior that was actually just our loop being blocked by delay() calls inside the servo library."]
+    </div>
+
+    <!-- Add more code tips as needed -->
+    <p>
+      <!-- REPLACE: Describe another code trick -->
+      [e.g., "We used a simple circular buffer to average IR sensor readings over 5 samples, which almost completely eliminated false triggers from electrical noise near the motor driver."]
+    </p>
+
+    <div class="code-block">
+<span class="comment">// Circular buffer average for noisy IR sensor</span>
+<span class="keyword">const int</span> BUF_SIZE = <span class="num">5</span>;
+<span class="keyword">int</span> irBuf[BUF_SIZE];
+<span class="keyword">int</span> bufIdx = <span class="num">0</span>;
+
+<span class="keyword">int</span> smoothedIR() {
+  irBuf[bufIdx++ % BUF_SIZE] = analogRead(IR_PIN);
+  <span class="keyword">long</span> sum = <span class="num">0</span>;
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="num">0</span>; i &lt; BUF_SIZE; i++) sum += irBuf[i];
+  <span class="keyword">return</span> sum / BUF_SIZE;
+}
+    </div>
+
+    <h3>If We Did It Again</h3>
+    <p>
+      <!-- REPLACE -->
+      [What would you do differently? What would you keep exactly the same? What do you wish you had known on Day 1?]
+    </p>
+
+    <ul>
+      <li><strong>[Advice 1]</strong> — [Explanation]</li>
+      <li><strong>[Advice 2]</strong> — [Explanation]</li>
+      <li><strong>[Advice 3]</strong> — [Explanation]</li>
+      <li><strong>[Advice 4]</strong> — [Explanation]</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Our #1 piece of advice:</strong> [Single most important thing you'd tell next year's team in one or two sentences.]
+    </div>
+
+    <h3>Final Thoughts</h3>
+    <p>
+      <!-- REPLACE -->
+      [A closing paragraph — what this project meant to your team, what you're most proud of, and any parting words for the next cohort.]
+    </p>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+<footer>
+  <p><strong>[Team Name]</strong> &nbsp;·&nbsp; ME210 — Introduction to Mechatronics &nbsp;·&nbsp; Stanford University, Winter 2026</p>
+  <p style="margin-top:0.5rem;">[Team Member 1] &nbsp;·&nbsp; [Team Member 2] &nbsp;·&nbsp; [Team Member 3] &nbsp;·&nbsp; [Team Member 4]</p>
+</footer>
+
+</body>
+</html>
