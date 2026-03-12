@@ -3,1256 +3,868 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ME210 — The Joy of Curling · [Team Name]</title>
+  <title>ME210 — Curling DROID · Winter 2026</title>
   <style>
     :root {
-      --cardinal: #8C1515;
-      --dark:     #1a1a1a;
-      --mid:      #444;
-      --light:    #f5f5f5;
-      --accent:   #B83A4B;
-      --border:   #ddd;
-      --code-bg:  #2b2b2b;
+      --cardinal:   #8C1515;
+      --cardinal-dk:#6b1010;
+      --dark:       #1a1a1a;
+      --mid:        #555;
+      --light:      #f7f7f7;
+      --border:     #e0e0e0;
+      --accent:     #b83a4b;
+      --tab-active: #8C1515;
+      --tab-hover:  #f0e8e8;
+      --code-bg:    #1e1e1e;
+      --placeholder-bg: #eef0f3;
+      --placeholder-border: #b0b8c8;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Georgia', 'Times New Roman', serif;
       background: #fff;
       color: var(--dark);
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
-    /* ── NAV ── */
+    /* ─── NAV ─── */
     nav {
       position: sticky;
       top: 0;
       background: var(--cardinal);
-      color: #fff;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,.3);
+      z-index: 200;
+      box-shadow: 0 2px 10px rgba(0,0,0,.35);
     }
-    nav .nav-inner {
-      max-width: 1100px;
+    .nav-inner {
+      max-width: 1140px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 0;
       padding: 0 1.5rem;
       flex-wrap: wrap;
     }
-    nav .brand {
+    .nav-brand {
+      font-family: 'Segoe UI', system-ui, sans-serif;
       font-weight: 700;
-      font-size: 1rem;
-      padding: 0.9rem 1.5rem 0.9rem 0;
+      font-size: 0.95rem;
+      color: #fff;
+      padding: 0.85rem 1.5rem 0.85rem 0;
       white-space: nowrap;
-      letter-spacing: 0.03em;
-    }
-    nav a {
-      color: rgba(255,255,255,.85);
-      text-decoration: none;
-      padding: 0.9rem 0.75rem;
-      font-size: 0.82rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+    }
+    nav a {
+      color: rgba(255,255,255,.82);
+      text-decoration: none;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.85rem 0.7rem;
       transition: color 0.15s;
       white-space: nowrap;
     }
     nav a:hover { color: #fff; }
+    .nav-divider {
+      width: 1px;
+      height: 1.2rem;
+      background: rgba(255,255,255,.3);
+      margin: 0 0.3rem;
+    }
 
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, var(--cardinal) 0%, #5a0a0a 100%);
-      color: #fff;
-      text-align: center;
-      padding: 5rem 1.5rem 4rem;
-    }
-    .hero .course-tag {
-      display: inline-block;
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 0.75rem;
-    }
-    .hero .subtitle {
-      font-size: 1.1rem;
-      opacity: 0.85;
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero .meta {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      font-size: 0.88rem;
-      opacity: 0.75;
-    }
-    .hero .meta span { display: flex; align-items: center; gap: 0.4rem; }
-
-    /* ── LAYOUT ── */
+    /* ─── LAYOUT ─── */
     .container {
-      max-width: 900px;
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
     }
 
     section {
-      padding: 4rem 0;
+      padding: 5rem 0 4rem;
       border-bottom: 1px solid var(--border);
     }
     section:last-of-type { border-bottom: none; }
 
-    .section-label {
-      font-size: 0.75rem;
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(160deg, #1a1a1a 0%, #3a0a0a 60%, var(--cardinal) 100%);
+      color: #fff;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 2.5rem;
+      font-style: italic;
+    }
+    .hero-team {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-team span {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.88rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 100px;
+      padding: 0.3rem 1rem;
+      letter-spacing: 0.04em;
+    }
+    .hero-team span em {
+      font-style: normal;
+      color: rgba(255,255,255,.55);
+      font-size: 0.78rem;
+      margin-left: 0.35rem;
+    }
+    .hero-photo-placeholder {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* ─── PLACEHOLDERS ─── */
+    .placeholder {
+      background: var(--placeholder-bg);
+      border: 2px dashed var(--placeholder-border);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #7a8ba0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.03em;
+      gap: 0.5rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    .placeholder .ph-icon {
+      font-size: 2rem;
+      opacity: 0.45;
+    }
+    .placeholder strong {
+      font-size: 0.92rem;
+      color: #4a6070;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .placeholder.tall   { min-height: 320px; }
+    .placeholder.medium { min-height: 220px; }
+    .placeholder.short  { min-height: 140px; }
+    .placeholder.code-ph {
+      background: #1e2430;
+      border-color: #3a4a60;
+      color: #7a9ab0;
+      font-family: 'Courier New', monospace;
+    }
+    .placeholder.code-ph strong { color: #8ab0c8; }
+
+    /* ─── SECTION HEADINGS ─── */
+    .section-tag {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--cardinal);
       margin-bottom: 0.5rem;
     }
     h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 1.5rem;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
       line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--dark);
     }
     h3 {
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--dark);
-      margin: 2rem 0 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    h4 {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cardinal);
+      margin-bottom: 0.4rem;
+    }
+    .lead {
+      font-size: 1.08rem;
+      color: var(--mid);
+      max-width: 820px;
+      margin-bottom: 2rem;
     }
     p { margin-bottom: 1rem; color: var(--mid); }
-    ul, ol { margin: 0.5rem 0 1rem 1.5rem; color: var(--mid); }
-    li { margin-bottom: 0.35rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { color: var(--mid); margin-bottom: 0.25rem; }
 
-    /* ── PLACEHOLDER BOXES ── */
-    .placeholder {
-      background: var(--light);
-      border: 2px dashed #ccc;
-      border-radius: 10px;
-      padding: 2rem;
-      text-align: center;
-      color: #888;
-      font-style: italic;
-      margin: 1.5rem 0;
+    /* ─── DIVIDER ─── */
+    .rule {
+      width: 60px;
+      height: 3px;
+      background: var(--cardinal);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
     }
-    .placeholder.tall { min-height: 220px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; }
-    .placeholder strong { display: block; font-size: 1.05rem; font-style: normal; color: #555; }
 
-    /* ── PHOTO GRID ── */
-    .photo-grid {
+    /* ─── TWO COLUMN GRID ─── */
+    .two-col {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 700px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    /* ─── STATE MACHINE ─── */
+    .state-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 1rem;
       margin: 1.5rem 0;
     }
-    .photo-card {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--border);
+    .state-card {
       background: var(--light);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--cardinal);
+      border-radius: 6px;
+      padding: 0.9rem 1.1rem;
     }
-    .photo-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-    }
-    .photo-card .caption {
-      padding: 0.6rem 0.85rem;
+    .state-card .state-name {
+      font-family: 'Courier New', monospace;
       font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--cardinal);
+      margin-bottom: 0.3rem;
+    }
+    .state-card p {
+      font-size: 0.82rem;
+      margin: 0;
       color: var(--mid);
     }
-    .photo-placeholder {
-      width: 100%;
-      height: 200px;
-      background: #e8e8e8;
+
+    .event-list {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #aaa;
-      font-size: 0.85rem;
-      font-style: italic;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    .event-badge {
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      background: #fff0f0;
+      border: 1px solid #f0c0c0;
+      color: var(--cardinal-dk);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-weight: 600;
     }
 
-    /* ── SCHEMATIC / DRAWING EMBED ── */
-    .embed-box {
-      width: 100%;
-      min-height: 350px;
+    /* ─── TABS ─── */
+    .tabs-wrapper {
       background: var(--light);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      font-style: italic;
-      margin: 1.5rem 0;
+      border-radius: 12px;
       overflow: hidden;
+      border: 1px solid var(--border);
     }
-    .embed-box img {
-      max-width: 100%;
-      max-height: 600px;
-      border-radius: 10px;
+    .tab-nav {
+      display: flex;
+      background: #fff;
+      border-bottom: 2px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 1rem 1.5rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: var(--mid);
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .tab-btn:hover { color: var(--cardinal); background: var(--tab-hover); }
+    .tab-btn.active { color: var(--cardinal); border-bottom-color: var(--cardinal); }
+
+    .tab-content { display: none; padding: 2.5rem; }
+    .tab-content.active { display: block; }
+
+    /* ─── SUBSECTION BLOCK ─── */
+    .subsection {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .subsection:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
 
-    /* ── PARTS TABLE ── */
-    .parts-table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    /* ─── PARTS TABLE ─── */
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.9rem;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.88rem;
+      margin-top: 1rem;
     }
-    th {
+    thead th {
       background: var(--cardinal);
       color: #fff;
-      padding: 0.65rem 1rem;
       text-align: left;
+      padding: 0.7rem 1rem;
       font-weight: 600;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
-    td {
-      padding: 0.6rem 1rem;
+    tbody tr:nth-child(even) { background: var(--light); }
+    tbody tr:hover { background: #fdf0f0; }
+    tbody td {
+      padding: 0.65rem 1rem;
       border-bottom: 1px solid var(--border);
       color: var(--mid);
     }
-    tr:nth-child(even) td { background: var(--light); }
-    tr:last-child td { border-bottom: none; }
-    .total-row td { font-weight: 700; color: var(--dark); background: #f0f0f0 !important; }
+    tbody td:first-child { font-weight: 600; color: var(--dark); }
 
-    /* ── TIMELINE ── */
-    .timeline { margin: 1.5rem 0; }
-    .tl-item {
-      display: flex;
-      gap: 1.25rem;
-      margin-bottom: 1.75rem;
-      align-items: flex-start;
-    }
-    .tl-dot {
-      flex-shrink: 0;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--cardinal);
-      margin-top: 0.45rem;
-      position: relative;
-    }
-    .tl-dot::after {
-      content: '';
-      position: absolute;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: calc(100% + 20px);
-      background: #e0e0e0;
-    }
-    .tl-item:last-child .tl-dot::after { display: none; }
-    .tl-date {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--cardinal);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 0.2rem;
-    }
-    .tl-title { font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
-    .tl-body { font-size: 0.92rem; color: var(--mid); }
-
-    /* ── CALLOUT CARDS ── */
-    .card-row {
+    /* ─── CONCEPT CARDS ─── */
+    .concept-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.25rem;
-      margin: 1.5rem 0;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
     }
-    .card {
-      border-radius: 10px;
-      padding: 1.5rem;
-      border-left: 4px solid var(--cardinal);
-      background: var(--light);
-    }
-    .card.green  { border-color: #2e7d32; }
-    .card.yellow { border-color: #f59e0b; }
-    .card.red    { border-color: #c0392b; }
-    .card.blue   { border-color: #1565c0; }
-    .card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--dark); }
-    .card p  { font-size: 0.88rem; margin-bottom: 0; color: var(--mid); }
-
-    /* ── CODE BLOCK ── */
-    .code-block {
-      background: var(--code-bg);
-      color: #f8f8f2;
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
-      overflow-x: auto;
-      font-family: 'Fira Code', 'Cascadia Code', monospace;
-      font-size: 0.82rem;
-      line-height: 1.6;
-      margin: 1.25rem 0;
-    }
-    .code-block .comment { color: #75715e; }
-    .code-block .keyword { color: #66d9e8; }
-    .code-block .string  { color: #a6e22e; }
-    .code-block .num     { color: #ae81ff; }
-
-    /* ── CALLOUT (tip/warning) ── */
-    .tip {
-      background: #e8f5e9;
-      border-left: 4px solid #2e7d32;
-      border-radius: 0 8px 8px 0;
-      padding: 1rem 1.25rem;
-      margin: 1.25rem 0;
-      font-size: 0.92rem;
-      color: #1b5e20;
-    }
-    .warning {
-      background: #fff8e1;
-      border-left: 4px solid #f59e0b;
-      border-radius: 0 8px 8px 0;
-      padding: 1rem 1.25rem;
-      margin: 1.25rem 0;
-      font-size: 0.92rem;
-      color: #6d4c00;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--dark);
-      color: rgba(255,255,255,.55);
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-      font-size: 0.85rem;
-    }
-    footer a { color: rgba(255,255,255,.7); text-decoration: none; }
-    footer strong { color: rgba(255,255,255,.9); }
-
-    /* ── HERO BUTTONS ── */
-    .hero-buttons {
-      margin-top: 2.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .hero-btn {
-      display: inline-block;
-      background: #fff;
-      color: var(--cardinal);
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 0.75rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      transition: transform 0.15s, box-shadow 0.15s;
-      box-shadow: 0 2px 12px rgba(0,0,0,.2);
-    }
-    .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
-    .hero-btn-outline {
-      background: transparent;
-      color: #fff;
-      border: 2px solid rgba(255,255,255,.7);
-    }
-    .hero-btn-outline:hover { background: rgba(255,255,255,.1); }
-
-    /* ── DROID SHOWCASE ── */
-    .droid-section {
-      background: var(--light);
-      border-radius: 14px;
-      padding: 2rem;
-      margin: 2rem 0;
+    .concept-card {
       border: 1px solid var(--border);
-    }
-    .droid-section h3 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      color: var(--cardinal);
-    }
-    .droid-section .photo-grid { margin-top: 1rem; }
-
-    /* ── SLIDE GRID ── */
-    .slide-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-    .slide-card {
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
-      border: 1px solid var(--border);
       background: #fff;
-      box-shadow: 0 1px 4px rgba(0,0,0,.07);
     }
-    .slide-card img {
-      width: 100%;
-      display: block;
-      object-fit: contain;
-      background: #f0f0f0;
-      max-height: 260px;
+    .concept-card-body {
+      padding: 1rem 1.1rem;
     }
-    .slide-placeholder {
-      width: 100%;
-      height: 200px;
-      background: #e8e8e8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #aaa;
-      font-size: 0.85rem;
-      font-style: italic;
-    }
-    .slide-card .caption {
-      padding: 0.6rem 0.85rem;
-      font-size: 0.82rem;
-      color: var(--mid);
-      border-top: 1px solid var(--border);
-    }
+    .concept-card h4 { margin-bottom: 0.25rem; }
+    .concept-card p { font-size: 0.85rem; margin: 0; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      nav .brand { width: 100%; padding: 0.75rem 0 0; }
-      nav a { padding: 0.55rem 0.5rem; font-size: 0.75rem; }
-      .hero { padding: 3rem 1rem 2.5rem; }
+    /* ─── CALLOUT BOX ─── */
+    .callout {
+      background: #fff8f8;
+      border-left: 4px solid var(--cardinal);
+      border-radius: 0 8px 8px 0;
+      padding: 1.1rem 1.4rem;
+      margin: 1.5rem 0;
     }
+    .callout p { margin: 0; font-size: 0.95rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1a1a1a;
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.8rem;
+      line-height: 1.8;
+    }
+    footer strong { color: rgba(255,255,255,.75); }
   </style>
 </head>
 <body>
 
-<!-- ════════════════════════════ NAV ════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════ NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="brand">ME210 · Winter 2026</div>
-    <a href="#prelim">Prelim Designs</a>
-    <a href="#design">Design</a>
-    <a href="#schematics">Schematics</a>
-    <a href="#photos">Photos</a>
-    <a href="#calculations">Calculations</a>
-    <a href="#parts">Parts &amp; Cost</a>
-    <a href="#process">Process</a>
-    <a href="#reflections">Reflections</a>
+    <div class="nav-brand">ME210 · Curling DROID</div>
+    <a href="#overview">Overview</a>
+    <a href="#state-machine">State Machine</a>
+    <a href="#subsystems">Subsystems</a>
+    <a href="#assembly">Assembly</a>
   </div>
 </nav>
 
-<!-- ════════════════════════════ HERO ════════════════════════════ -->
-<header class="hero">
-  <div class="course-tag">ME210 — Introduction to Mechatronics · Winter 2026</div>
-  <h1>[Your Robot Name Here]</h1>
-  <p class="subtitle">The Joy of Curling — 2026 Winter Olympics BOTspiel · Stanford University</p>
-  <div class="meta">
-    <span>👤 Billy (CS)</span>
-    <span>👤 Carlos (EE)</span>
-    <span>👤 Alex (EE)</span>
-    <span>👤 Ana (MechE)</span>
-  </div>
-  <div class="hero-buttons">
-    <a class="hero-btn" href="#checkoff-droid">Check-off DROID</a>
-    <a class="hero-btn hero-btn-outline" href="#competition-droid">Competition DROID</a>
-  </div>
-</header>
+<!-- ═══════════════════════════════════════════════ HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">ME210 · Introduction to Mechatronics · Stanford University · Winter 2026</p>
+  <h1>ME210 Curling DROID</h1>
+  <p class="hero-subtitle">Autonomous Curling Robot – Stanford Mechanical Engineering</p>
 
-<!-- ════════════════════════════ PRELIMINARY DESIGNS ════════════════════════════ -->
-<section id="prelim">
+  <div class="hero-team">
+    <span>Ana<em>MechE</em></span>
+    <span>Billy<em>CS</em></span>
+    <span>Carlos<em>EE</em></span>
+    <span>Alex<em>EE</em></span>
+  </div>
+
+  <div class="hero-photo-placeholder">
+    <div class="placeholder tall">
+      <div class="ph-icon">📷</div>
+      <strong>Insert Team Photo Here</strong>
+      <span>Team photo — all four members with the robot</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PROJECT OVERVIEW -->
+<section id="overview">
   <div class="container">
-    <div class="section-label">Checkpoints 1 &amp; 2 · February 17, 2026</div>
-    <h2>Preliminary Designs</h2>
+    <p class="section-tag">Project Overview</p>
+    <h2>What Is the ME210 Curling DROID?</h2>
+    <div class="rule"></div>
 
-    <p>
-      Team: <strong>Billy</strong> (CS — state machines &amp; code), <strong>Carlos</strong> (EE — puck release mechanism), <strong>Alex</strong> (EE — IR detection &amp; hardware), <strong>Ana</strong> (MechE — 3D printing, CAD &amp; PRL). At our first two checkpoints we locked down the five basic tasks our DROID needed to solve, built a state machine, tested subsystems, and brought CAD to life with a laser-cut duron chassis and 3D-printed parts.
+    <p class="lead">
+      The goal of the project is to design an autonomous DROID that can compete in a head-to-head curling competition, placing pucks as close as possible to the center target. The robot must operate autonomously using sensors, motors, and an Arduino control system.
     </p>
 
-    <!-- ── PRELIMINARY DESIGNS SLIDES ── -->
-    <h3>Preliminary Designs Presentation</h3>
-    <p style="font-size:0.85rem;color:#999;margin-bottom:0.75rem;">
-      Add slides by dropping images in <code>photos/prelim/</code> and replacing each placeholder div with <code>&lt;img src="photos/prelim/slide_01.jpg"&gt;</code>.
-    </p>
-    <div class="slide-grid">
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/prelim_01.jpg" alt="Title slide"> -->
-        <div class="slide-placeholder">[ Title slide ]</div>
-        <div class="caption">Title — Billy, Carlos, Alex, Ana</div>
+    <div class="two-col">
+      <div>
+        <h3>Key Capabilities</h3>
+        <ul>
+          <li><strong>Autonomous navigation</strong> — operates without any human input after start signal</li>
+          <li><strong>IR beacon orientation</strong> — detects 909 Hz infrared beacons to determine field alignment</li>
+          <li><strong>Line following</strong> — uses reflective IR sensors to track centerline tape to the scoring zone</li>
+          <li><strong>Puck release</strong> — servo-controlled gate releases pucks down a gravity slide</li>
+          <li><strong>Fully integrated mechatronic system</strong> — sensing, actuation, and control on a single Arduino platform</li>
+        </ul>
       </div>
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/prelim_02.jpg" alt="Basic Tasks"> -->
-        <div class="slide-placeholder">[ Basic Tasks ]</div>
-        <div class="caption">Basic Tasks overview</div>
-      </div>
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/prelim_03.jpg" alt="Parts List"> -->
-        <div class="slide-placeholder">[ Parts List ]</div>
-        <div class="caption">Parts list</div>
-      </div>
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/prelim_04.jpg" alt="Puck Release CAD"> -->
-        <div class="slide-placeholder">[ Puck Release CAD ]</div>
-        <div class="caption">Puck Release — servo-controlled gate</div>
-      </div>
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/prelim_05.jpg" alt="IR Detection Sketch"> -->
-        <div class="slide-placeholder">[ IR Detection Sketch ]</div>
-        <div class="caption">IR Detection — high-pass filter plan</div>
-      </div>
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/prelim_06.jpg" alt="Preliminary Code"> -->
-        <div class="slide-placeholder">[ Preliminary Code ]</div>
-        <div class="caption">Preliminary state machine code</div>
-      </div>
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/prelim_07.jpg" alt="Timeline"> -->
-        <div class="slide-placeholder">[ Timeline ]</div>
-        <div class="caption">Timeline &amp; responsibilities</div>
-      </div>
-    </div>
-
-    <!-- ── BASIC TASKS ── -->
-    <h3>Five Basic Tasks</h3>
-    <div class="card-row">
-      <div class="card blue"><h4>01 — Moving</h4><p>Differential drive with two TT Yellow DC motors + L298N H-bridge. Laser-cut duron chassis, 3D-printed motor brackets.</p></div>
-      <div class="card blue"><h4>02 — Puck Release</h4><p>Servo-controlled gate on an angled slide. Gate held closed, then opened by 9G micro servo to let pucks slide down into the house.</p></div>
-      <div class="card blue"><h4>03 — IR Detection</h4><p>IR phototransistors on left &amp; right of DROID. Both detect signal only when DROID faces forward. High-pass filter (f<sub>c</sub> &lt; 56 kHz) rejects sunlight.</p></div>
-      <div class="card blue"><h4>04 — Line Following</h4><p>Three TCRT5000 IR reflective sensors (left / center / right, ~1 in apart). Center follows the tape; outer two correct heading deviation.</p></div>
-      <div class="card blue"><h4>05 — Photodetection</h4><p>Op-amp amplifier + LM339 comparator circuit (from Lab 1/2) converts phototransistor signal to a clean digital HIGH/LOW for the Arduino.</p></div>
-    </div>
-
-    <!-- ── STATE MACHINE ── -->
-    <h3>State Machine</h3>
-    <div class="card-row">
-      <div class="card"><h4>IDLE</h4><p>Waiting at launch zone. Motors off, gate closed. Transitions on StartSignal (toggle switch).</p></div>
-      <div class="card"><h4>SCANNING</h4><p>Rotate CCW. Read left &amp; right IR detectors. When both detect beacon signal → SEEKING_TAPE.</p></div>
-      <div class="card"><h4>SEEKING_TAPE</h4><p>Drive forward. Adjust heading based on IR balance until center tape sensor triggers → LINE_FOLLOWING.</p></div>
-      <div class="card"><h4>LINE_FOLLOWING</h4><p>Follow black center tape. Correct heading with outer sensors. Front sensor hits hog-line tape → STOP_AT_LINE.</p></div>
-      <div class="card"><h4>STOP_AT_LINE</h4><p>Stop motors. Start settle timer. On timer expiry → RELEASING.</p></div>
-      <div class="card"><h4>RELEASING</h4><p>Open gate motor. Wait for pucks to slide. On GateFullyOpen → DONE.</p></div>
-      <div class="card green"><h4>DONE</h4><p>Gate closed. All motors off. Return to base logic begins here.</p></div>
-    </div>
-
-    <div class="embed-box" style="min-height:280px;">
-      <!-- <img src="photos/prelim/state_diagram.jpg" alt="State diagram sketch"> -->
-      <span>[ Insert state diagram sketch / photo here ]</span>
-    </div>
-
-    <!-- ── CHECKPOINT 2 ── -->
-    <h3>Checkpoint 2 — Progress Report (Feb 17)</h3>
-
-    <h3 style="font-size:1rem;">Puck Release: Testing &amp; Iterating</h3>
-    <p>
-      We iterated on slide angles until all pucks landed within the scoring zone. Our 9G servo could not reliably hold back 3 pucks, so we settled on releasing 2 at a time. We also explored alternative launcher concepts: a <strong>carousel dispenser</strong>, a <strong>spring/rubber-band launcher</strong>, and a <strong>push mechanism</strong>.
-    </p>
-    <div class="slide-grid">
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/cp2_puck_test.jpg" alt="Puck release testing on field"> -->
-        <div class="slide-placeholder">[ Puck release testing on field ]</div>
-        <div class="caption">Testing slide angle on the curling sheet</div>
-      </div>
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/cp2_rough_droid.jpg" alt="Rough DROID prototype"> -->
-        <div class="slide-placeholder">[ Rough DROID prototype ]</div>
-        <div class="caption">Early DROID prototype with 3D-printed slide</div>
-      </div>
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/cp2_carousel.jpg" alt="Carousel concept"> -->
-        <div class="slide-placeholder">[ Carousel dispenser concept ]</div>
-        <div class="caption">Alternative concept — carousel dispenser</div>
-      </div>
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/cp2_push.jpg" alt="Push mechanism concept"> -->
-        <div class="slide-placeholder">[ Push mechanism concept ]</div>
-        <div class="caption">Alternative concept — push/scotch-yoke mechanism</div>
-      </div>
-    </div>
-
-    <h3 style="font-size:1rem;">Bringing CAD to Life</h3>
-    <p>
-      We 3D-printed the slide and motor brackets and laser-cut the chassis from Duron. This let us physically validate motor placement, battery location, and overall balance — the prototype revealed the DROID was front-heavy, informing the final chassis redesign.
-    </p>
-    <div class="slide-grid">
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/cad_render.jpg" alt="Fusion 360 CAD render"> -->
-        <div class="slide-placeholder">[ Fusion 360 CAD render ]</div>
-        <div class="caption">Full Fusion 360 model</div>
-      </div>
-      <div class="slide-card">
-        <!-- <img src="photos/prelim/rough_droid_annotated.jpg" alt="Annotated rough droid"> -->
-        <div class="slide-placeholder">[ Annotated rough DROID photo ]</div>
-        <div class="caption">Rough DROID — annotated notes from testing</div>
-      </div>
-    </div>
-
-    <!-- ── TEAM & TIMELINE ── -->
-    <h3>Team &amp; Timeline</h3>
-    <div class="card-row">
-      <div class="card"><h4>Alex — EE</h4><p>IR detection circuit, hardware wiring</p></div>
-      <div class="card"><h4>Ana — MechE</h4><p>3D printing, CAD (Fusion 360), PRL fabrication</p></div>
-      <div class="card"><h4>Carlos — EE</h4><p>Puck release mechanism design &amp; testing</p></div>
-      <div class="card"><h4>Billy — CS</h4><p>Finite state machine, Arduino code</p></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════════════════════════════ DESIGN ════════════════════════════ -->
-<section id="design">
-  <div class="container">
-    <div class="section-label">Initial Design Review</div>
-    <h2>Selected Design Concept</h2>
-
-    <p>
-      Our DROID (Dynamic Rolling Olympian in Disguise) was designed to autonomously play a head-to-head game of curling on a 4 ft × 16 ft particle board arena. Starting from a 13" × 13" zone at one end, the robot must locate the house (bull's-eye) at the center seam of the field using IR beacons (909 Hz, 10" above surface), then slide up to 8 steel pucks (2.08" diameter, 8 oz) as close to the button as possible within a 2-minute match.
-      <!-- ADD: any team-specific flavor about your overall strategy here -->
-    </p>
-
-    <h3>Design Concept Overview</h3>
-    <p>
-      <!-- REPLACE: Describe the design you selected at the Initial Design Review — locomotion, sensing, actuation strategy -->
-      [Explain the concept you selected. Why did you choose this approach over alternatives? What were the core sub-systems — locomotion, IR beacon homing, tape/line sensing, puck release mechanism, return-to-base logic?]
-    </p>
-
-    <div class="card-row">
-      <div class="card">
-        <h4>Locomotion</h4>
-        <p>Differential drive — two TT Yellow DC motors, L298N H-bridge, laser-cut Duron chassis, 3D-printed brackets</p>
-      </div>
-      <div class="card">
-        <h4>Sensing</h4>
-        <p>IR phototransistors (left + right) for beacon homing; 3× TCRT5000 IR reflective sensors for line following</p>
-      </div>
-      <div class="card">
-        <h4>Actuation</h4>
-        <p>9G micro servo holds and releases gate on angled slide; pucks slide by gravity into the house</p>
-      </div>
-      <div class="card">
-        <h4>Control Strategy</h4>
-        <p>7-state event-driven state machine on Arduino Uno: IDLE → SCANNING → SEEKING_TAPE → LINE_FOLLOWING → STOP_AT_LINE → RELEASING → DONE</p>
-      </div>
-    </div>
-
-    <h3>Design Alternatives Considered</h3>
-    <p>
-      <!-- REPLACE: What other approaches did you consider and why did you reject them? -->
-      [Briefly list 2-3 alternative design directions you considered at the design review and why you ruled them out — feasibility, complexity, time, resources.]
-    </p>
-
-    <div class="embed-box">
-      <!-- REPLACE img src with your concept sketch or CAD render -->
-      <!-- <img src="photos/concept_sketch.jpg" alt="Initial design concept sketch"> -->
-      <span>[ Insert concept sketch / CAD render / design review slide here ]</span>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════ SCHEMATICS ════════════════════════════ -->
-<section id="schematics">
-  <div class="container">
-    <div class="section-label">Electrical</div>
-    <h2>Schematics &amp; Wiring</h2>
-
-    <p>
-      <!-- REPLACE: Brief description of the electrical architecture -->
-      [Summarize your electrical system: power supply, microcontrollers, motor drivers, sensor interfaces, etc.]
-    </p>
-
-    <h3>Overall Wiring Schematic</h3>
-    <div class="embed-box">
-      <!-- REPLACE: <img src="photos/schematic_full.png" alt="Full wiring schematic"> -->
-      <span>[ Insert full wiring schematic (PNG/JPG/PDF screenshot) ]</span>
-    </div>
-
-    <h3>Power Distribution</h3>
-    <p>
-      <!-- REPLACE: Describe your power architecture — battery voltage, regulators, logic vs. motor power, etc. -->
-      [e.g., 7.4V 2S LiPo → L298N motor driver for motors; 5V regulated line for Arduino and sensors via onboard 5V pin / external regulator.]
-    </p>
-
-    <h3>Motor Driver Circuit</h3>
-    <div class="embed-box">
-      <!-- REPLACE: <img src="photos/schematic_motor.png" alt="Motor driver schematic"> -->
-      <span>[ Insert motor driver schematic detail ]</span>
-    </div>
-
-    <h3>Sensor Interface</h3>
-    <div class="embed-box">
-      <!-- REPLACE: <img src="photos/schematic_sensors.png" alt="Sensor wiring diagram"> -->
-      <span>[ Insert sensor wiring diagram ]</span>
-    </div>
-
-    <div class="warning">
-      <strong>Lesson learned:</strong> [e.g., "We accidentally shared ground between the motor power rail and logic ground without a common reference — this caused erratic sensor readings. Always connect grounds!"]
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════ DRAWINGS / CAD ════════════════════════════ -->
-<section id="drawings">
-  <div class="container">
-    <div class="section-label">Mechanical</div>
-    <h2>Mechanical Drawings &amp; CAD</h2>
-
-    <p>
-      <!-- REPLACE: Describe the physical structure, materials, fabrication methods -->
-      [Describe the chassis, frame material, key fabricated parts, and any 3D-printed or laser-cut components.]
-    </p>
-
-    <h3>Chassis / Overall Assembly</h3>
-    <div class="embed-box">
-      <!-- REPLACE: <img src="photos/cad_assembly.png" alt="CAD assembly drawing"> -->
-      <span>[ Insert CAD assembly drawing or dimensioned sketch ]</span>
-    </div>
-
-    <h3>Custom Parts</h3>
-    <div class="photo-grid">
-      <div class="photo-card">
-        <!-- REPLACE: <img src="photos/part_arm.jpg" alt="Token pickup arm"> -->
-        <div class="photo-placeholder">[ Photo / drawing of custom part 1 ]</div>
-        <div class="caption">[Part name and brief description]</div>
-      </div>
-      <div class="photo-card">
-        <!-- REPLACE: <img src="photos/part_chassis.jpg" alt="Chassis base plate"> -->
-        <div class="photo-placeholder">[ Photo / drawing of custom part 2 ]</div>
-        <div class="caption">[Part name and brief description]</div>
-      </div>
-      <div class="photo-card">
-        <!-- REPLACE: <img src="photos/part_bracket.jpg" alt="Motor bracket"> -->
-        <div class="photo-placeholder">[ Photo / drawing of custom part 3 ]</div>
-        <div class="caption">[Part name and brief description]</div>
+      <div>
+        <div class="placeholder medium">
+          <div class="ph-icon">🏟</div>
+          <strong>Insert Field Diagram / Curling Arena Image</strong>
+          <span>Top-down view of competition field with target zones, beacon positions, and tape lines</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════ PHOTOS ════════════════════════════ -->
-<section id="photos">
+<!-- ═══════════════════════════════════════════════ STATE MACHINE -->
+<section id="state-machine">
   <div class="container">
-    <div class="section-label">Gallery</div>
-    <h2>Robot Photos</h2>
+    <p class="section-tag">Control Architecture</p>
+    <h2>Robot State Machine</h2>
+    <div class="rule"></div>
 
-    <p>Photos of the finished robot, subsystems, and in-competition action.</p>
+    <p class="lead">
+      The robot is controlled by a finite state machine (FSM). Each state defines a unique behavior, and transitions between states are driven by sensor events.
+    </p>
 
-    <!-- ── CHECK-OFF DROID ── -->
-    <div class="droid-section" id="checkoff-droid">
-      <h3>Check-off DROID</h3>
-      <p>The DROID as it looked for the Beat the Brick check-off on March 6. This is the version that first demonstrated minimum functionality — scanning, line following, and puck release.</p>
-      <div class="photo-grid">
-        <div class="photo-card">
-          <!-- <img src="photos/checkoff_front.jpg" alt="Check-off DROID front"> -->
-          <div class="photo-placeholder">[ Check-off DROID — front ]</div>
-          <div class="caption">Front view — check-off configuration</div>
-        </div>
-        <div class="photo-card">
-          <!-- <img src="photos/checkoff_side.jpg" alt="Check-off DROID side"> -->
-          <div class="photo-placeholder">[ Check-off DROID — side ]</div>
-          <div class="caption">Side view</div>
-        </div>
-        <div class="photo-card">
-          <!-- <img src="photos/checkoff_action.jpg" alt="Check-off run"> -->
-          <div class="photo-placeholder">[ Check-off run in action ]</div>
-          <div class="caption">Beat the Brick — check-off run</div>
-        </div>
+    <div class="placeholder medium">
+      <div class="ph-icon">📊</div>
+      <strong>Insert State Diagram Image</strong>
+      <span>Full FSM diagram showing all states, transitions, and triggering events</span>
+    </div>
+
+    <h3 style="margin-top: 2rem;">States</h3>
+    <div class="state-grid">
+      <div class="state-card">
+        <div class="state-name">IDLE</div>
+        <p>Robot waits at the start position for the competition start signal.</p>
+      </div>
+      <div class="state-card">
+        <div class="state-name">SCANNING</div>
+        <p>Robot rotates in place to sweep for IR beacon signals on both sides.</p>
+      </div>
+      <div class="state-card">
+        <div class="state-name">SEEKING_TAPE</div>
+        <p>Robot drives forward while hunting for the centerline tape on the floor.</p>
+      </div>
+      <div class="state-card">
+        <div class="state-name">LINE_FOLLOWING</div>
+        <p>Robot tracks centerline tape toward the scoring zone using PD control.</p>
+      </div>
+      <div class="state-card">
+        <div class="state-name">STOP_AT_LINE</div>
+        <p>Robot detects the stop line and brakes to halt in the scoring zone.</p>
+      </div>
+      <div class="state-card">
+        <div class="state-name">RELEASING</div>
+        <p>Servo gate opens and pucks slide down the ramp into the scoring area.</p>
+      </div>
+      <div class="state-card">
+        <div class="state-name">DONE</div>
+        <p>All pucks released. Robot holds position until end of round.</p>
       </div>
     </div>
 
-    <!-- ── COMPETITION DROID ── -->
-    <div class="droid-section" id="competition-droid">
-      <h3>Competition DROID</h3>
-      <p>The final competition-ready DROID at the BOTspiel on March 8 in the Atrium of Building 550.</p>
-      <div class="photo-grid">
-        <div class="photo-card">
-          <!-- <img src="photos/comp_front.jpg" alt="Competition DROID front"> -->
-          <div class="photo-placeholder">[ Competition DROID — front ]</div>
-          <div class="caption">Front view — competition configuration</div>
-        </div>
-        <div class="photo-card">
-          <!-- <img src="photos/comp_side.jpg" alt="Competition DROID side"> -->
-          <div class="photo-placeholder">[ Competition DROID — side ]</div>
-          <div class="caption">Side view</div>
-        </div>
-        <div class="photo-card">
-          <!-- <img src="photos/comp_action.jpg" alt="Competition action"> -->
-          <div class="photo-placeholder">[ Competition day — in action ]</div>
-          <div class="caption">BOTspiel — March 8, Building 550</div>
-        </div>
-        <div class="photo-card">
-          <!-- <img src="photos/comp_team.jpg" alt="Team at competition"> -->
-          <div class="photo-placeholder">[ Team at competition ]</div>
-          <div class="caption">Billy, Carlos, Alex, Ana at the BOTspiel</div>
-        </div>
-      </div>
+    <h3 style="margin-top: 1.5rem;">Events</h3>
+    <div class="event-list">
+      <span class="event-badge">StartSignal</span>
+      <span class="event-badge">IR_Left</span>
+      <span class="event-badge">IR_Right</span>
+      <span class="event-badge">BothIR</span>
+      <span class="event-badge">TapeFound</span>
+      <span class="event-badge">StopLine</span>
+      <span class="event-badge">Settled</span>
+      <span class="event-badge">GateOpen</span>
     </div>
 
-    <h3>Additional Photos</h3>
-    <div class="photo-grid">
-
-      <div class="photo-card">
-        <!-- REPLACE: <img src="photos/robot_front.jpg" alt="Robot front view"> -->
-        <div class="photo-placeholder">[ Front view ]</div>
-        <div class="caption">Front view — final robot</div>
-      </div>
-
-      <div class="photo-card">
-        <!-- REPLACE: <img src="photos/robot_side.jpg" alt="Robot side view"> -->
-        <div class="photo-placeholder">[ Side view ]</div>
-        <div class="caption">Side view</div>
-      </div>
-
-      <div class="photo-card">
-        <!-- REPLACE: <img src="photos/robot_top.jpg" alt="Robot top view"> -->
-        <div class="photo-placeholder">[ Top view ]</div>
-        <div class="caption">Top view — layout of electronics</div>
-      </div>
-
-      <div class="photo-card">
-        <!-- REPLACE: <img src="photos/electronics_inside.jpg" alt="Electronics close-up"> -->
-        <div class="photo-placeholder">[ Electronics close-up ]</div>
-        <div class="caption">Electronics bay</div>
-      </div>
-
-      <div class="photo-card">
-        <!-- REPLACE: <img src="photos/competition_1.jpg" alt="Competition run"> -->
-        <div class="photo-placeholder">[ Competition / test run 1 ]</div>
-        <div class="caption">Competition day — [describe moment]</div>
-      </div>
-
-      <div class="photo-card">
-        <!-- REPLACE: <img src="photos/team_photo.jpg" alt="Team photo"> -->
-        <div class="photo-placeholder">[ Team photo ]</div>
-        <div class="caption">The team</div>
-      </div>
-
-    </div>
-
-    <p style="font-size:0.85rem; color:#999; margin-top:0.5rem;">
-      To add photos: drop image files in the <code>photos/</code> folder alongside this HTML file, then replace the placeholder <code>&lt;div&gt;</code> elements with <code>&lt;img src="photos/filename.jpg"&gt;</code>.
-    </p>
-  </div>
-</section>
-
-<!-- ════════════════════════════ CALCULATIONS ════════════════════════════ -->
-<section id="calculations">
-  <div class="container">
-    <div class="section-label">Engineering Analysis</div>
-    <h2>Key Calculations</h2>
-
-    <p>
-      <!-- REPLACE: Overview of what you needed to calculate -->
-      [Brief intro — what design decisions required quantitative analysis? Motor sizing? Gear ratio? Torque? Battery life estimation?]
-    </p>
-
-    <h3>Motor &amp; Torque Sizing</h3>
-    <p>
-      <!-- REPLACE: Your motor selection rationale with numbers -->
-      [e.g., "Required driving torque = F × r_wheel. Estimated robot mass = 1.2 kg, friction coefficient μ ≈ 0.4, so F_drive ≈ 4.7 N. At r = 35 mm, T_required = 0.165 N·m per motor. Selected motor stall torque = 0.55 N·m with 30% safety margin."]
-    </p>
-
-    <div class="embed-box" style="min-height:180px;">
-      <!-- REPLACE: <img src="photos/calc_torque.png" alt="Torque calculation"> -->
-      <span>[ Insert handwritten or typed calculation scan / screenshot ]</span>
-    </div>
-
-    <h3>Gear Ratio / Speed</h3>
-    <p>
-      <!-- REPLACE -->
-      [e.g., "Target speed ≈ 0.4 m/s. With 70 mm wheels and 150 RPM motor output, v = ω × r ≈ 0.55 m/s — within acceptable range."]
-    </p>
-
-    <h3>Battery Life Estimate</h3>
-    <p>
-      <!-- REPLACE -->
-      [e.g., "Two motors at stall draw ~1.2 A each; idle draw ~200 mA each. Arduino + sensors ≈ 0.15 A. At 50% duty cycle peak: I_avg ≈ 1.55 A. 2000 mAh battery → ~1.3 h runtime — sufficient for competition rounds."]
-    </p>
-
-    <h3>[Any Other Relevant Calculation]</h3>
-    <p><!-- REPLACE -->[e.g., sensor range, servo torque needed, structural load, etc.]</p>
-
-    <div class="embed-box" style="min-height:180px;">
-      <span>[ Insert additional calculation sheet / diagram ]</span>
+    <div class="callout">
+      <p>The robot starts in <strong>IDLE</strong>, rotates to detect IR beacons during <strong>SCANNING</strong>, aligns with the centerline, follows tape to the target zone via <strong>LINE_FOLLOWING</strong>, stops at the scoring line, and releases pucks before ending the run in <strong>DONE</strong>.</p>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════ PARTS LIST ════════════════════════════ -->
-<section id="parts">
+<!-- ═══════════════════════════════════════════════ SUBSYSTEMS (TABS) -->
+<section id="subsystems" style="padding-top: 4rem;">
   <div class="container">
-    <div class="section-label">Bill of Materials</div>
-    <h2>Parts List &amp; Cost</h2>
+    <p class="section-tag">Technical Deep Dive</p>
+    <h2>Subsystem Reports</h2>
+    <div class="rule"></div>
+    <p class="lead">Each subsystem was designed, iterated, and tested independently before full integration.</p>
 
-    <div class="parts-table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Component</th>
-            <th>Description / Notes</th>
-            <th>Qty</th>
-            <th>Unit Cost</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- REPLACE each row with your actual parts -->
-          <tr>
-            <td>1</td>
-            <td>Arduino Uno</td>
-            <td>Main microcontroller — state machine code (existing kit)</td>
-            <td>1</td>
-            <td>kit</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>TT Yellow DC Motors</td>
-            <td>Main drive train — Amazon/DFRobot</td>
-            <td>2</td>
-            <td>$[X.XX]</td>
-            <td>$[X.XX]</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>L298N Motor Driver</td>
-            <td>H-bridge for motor speed &amp; direction (existing kit)</td>
-            <td>1</td>
-            <td>kit</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>9G Micro Servo</td>
-            <td>Gate actuation for puck release (existing kit)</td>
-            <td>1</td>
-            <td>kit</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>TCRT5000 IR Reflective Sensor</td>
-            <td>Line following — detects hog line &amp; start zones (lab, $0.83 × 3)</td>
-            <td>3</td>
-            <td>$0.83</td>
-            <td>$2.49</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>TSOP34156 IR Receiver (56 kHz)</td>
-            <td>Detects IR beacons from across the field — Newark</td>
-            <td>2</td>
-            <td>$[X.XX]</td>
-            <td>$[X.XX]</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>26-020 SPST Toggle Switch</td>
-            <td>Emergency kill switch (required) — Newark</td>
-            <td>1</td>
-            <td>$[X.XX]</td>
-            <td>$[X.XX]</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>7.2V NiMH Battery Pack</td>
-            <td>Main power (existing kit — not counted toward budget)</td>
-            <td>2</td>
-            <td>kit</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>LM339 Quad Comparator</td>
-            <td>Processes IR phototransistor &amp; line sensor signals (lab)</td>
-            <td>1</td>
-            <td>lab</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Resistors (10kΩ, 220Ω, 1MΩ, 83.33kΩ)</td>
-            <td>Pull-ups, current limiting, hysteresis, comparator dividers (lab)</td>
-            <td>~15</td>
-            <td>lab</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>0.1 µF Capacitor</td>
-            <td>Decoupling / IR sensor glitch prevention (lab)</td>
-            <td>2</td>
-            <td>lab</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>10 kΩ Potentiometer</td>
-            <td>Sensitivity threshold adjustment for line sensors (lab)</td>
-            <td>1</td>
-            <td>lab</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>13</td>
-            <td>Duron sheet (chassis)</td>
-            <td>Laser-cut chassis base — PRL/Lab64</td>
-            <td>1</td>
-            <td>$[X.XX]</td>
-            <td>$[X.XX]</td>
-          </tr>
-          <tr>
-            <td>14</td>
-            <td>3D-printed parts (slide, brackets)</td>
-            <td>Puck slide + motor brackets — PRL printers</td>
-            <td>—</td>
-            <td>$[X.XX]</td>
-            <td>$[X.XX]</td>
-          </tr>
-          <tr>
-            <td>15</td>
-            <td>[Add any remaining purchased parts]</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr class="total-row">
-            <td colspan="5" style="text-align:right;">Total Purchased Cost (≤ $200 limit)</td>
-            <td>$[TOTAL]</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="tabs-wrapper">
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="openTab(event,'tab-puck')">Puck Release</button>
+        <button class="tab-btn"        onclick="openTab(event,'tab-ir')">IR Sensor</button>
+        <button class="tab-btn"        onclick="openTab(event,'tab-line')">Line Sensor</button>
+        <button class="tab-btn"        onclick="openTab(event,'tab-motor')">Motor Driving</button>
+        <button class="tab-btn"        onclick="openTab(event,'tab-assembly')">Assembly</button>
+      </div>
+
+      <!-- ─── TAB: PUCK RELEASE ─── -->
+      <div id="tab-puck" class="tab-content active">
+        <h3>Puck Release Mechanism</h3>
+
+        <div class="subsection">
+          <h4>Goal</h4>
+          <p>Release pucks reliably into the scoring zone while keeping the mechanical system simple and reliable.</p>
+        </div>
+
+        <div class="subsection">
+          <h4>Approach</h4>
+          <p>We designed a servo-controlled gate mechanism that holds the pucks in a magazine and releases them down a gravity slide. When the robot reaches the scoring zone, the Arduino commands the servo to open the gate, allowing pucks to slide freely into the target area.</p>
+          <div class="placeholder medium">
+            <div class="ph-icon">⚙️</div>
+            <strong>Insert Puck Release CAD Image</strong>
+            <span>CAD render or sketch of servo gate + slide assembly</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Concepts Considered</h4>
+          <div class="concept-grid">
+            <div class="concept-card">
+              <div class="placeholder short">
+                <div class="ph-icon">🔄</div>
+                <strong>Insert Concept Sketch</strong>
+              </div>
+              <div class="concept-card-body">
+                <h4>Carousel Dispenser</h4>
+                <p>Rotating drum feeds pucks one at a time. Rejected due to complexity and jamming risk.</p>
+              </div>
+            </div>
+            <div class="concept-card">
+              <div class="placeholder short">
+                <div class="ph-icon">🎯</div>
+                <strong>Insert Concept Sketch</strong>
+              </div>
+              <div class="concept-card-body">
+                <h4>Spring / Rubber-band Launcher</h4>
+                <p>Spring-loaded shooter for distance. Rejected — inconsistent release and hard to calibrate.</p>
+              </div>
+            </div>
+            <div class="concept-card">
+              <div class="placeholder short">
+                <div class="ph-icon">➡️</div>
+                <strong>Insert Concept Sketch</strong>
+              </div>
+              <div class="concept-card-body">
+                <h4>Push Mechanism</h4>
+                <p>Linear actuator pushes pucks forward. Simpler but lacked the precision of the gravity slide.</p>
+              </div>
+            </div>
+          </div>
+          <div class="placeholder short" style="margin-top:1rem;">
+            <div class="ph-icon">📐</div>
+            <strong>Insert Full Concept Sketches Sheet</strong>
+            <span>Side-by-side comparison of all three concepts</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>MVP Design</h4>
+          <p>We chose a <strong>53-degree slide</strong> as our MVP solution because it is mechanically simple and reliable. The slide allows gravity to release the pucks once the servo gate opens — no active propulsion required.</p>
+          <div class="placeholder medium">
+            <div class="ph-icon">📐</div>
+            <strong>Insert MVP Slide Design Image</strong>
+            <span>Drawing or CAD of the 53° gravity slide with servo gate</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Design Iteration</h4>
+          <p>We later moved the servo higher on the chassis and extended the slide length so the pucks would land closer to the center of the target zone. This adjustment improved scoring accuracy without adding mechanical complexity.</p>
+          <div class="placeholder medium">
+            <div class="ph-icon">🔧</div>
+            <strong>Insert Updated Slide Design Image</strong>
+            <span>Revised slide geometry showing extended length and raised servo position</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Challenges</h4>
+          <div class="placeholder short">
+            <div class="ph-icon">📝</div>
+            <strong>Insert Discussion of Mechanical Challenges</strong>
+            <span>Topics: puck alignment issues · servo strength limitations · puck stacking behavior</span>
+          </div>
+        </div>
+      </div><!-- /tab-puck -->
+
+      <!-- ─── TAB: IR SENSOR ─── -->
+      <div id="tab-ir" class="tab-content">
+        <h3>IR Beacon Detection</h3>
+
+        <div class="subsection">
+          <h4>Goal</h4>
+          <p>Determine the robot's orientation relative to the curling field using infrared beacons positioned at the end of the arena.</p>
+        </div>
+
+        <div class="subsection">
+          <h4>Approach</h4>
+          <p>Two IR sensors are placed on the left and right sides of the robot. The robot rotates until both sensors detect the beacon signal simultaneously, indicating that the robot is facing directly down the field toward the scoring zone.</p>
+          <p>A high-pass filter (~48 kHz cutoff) is used to reject ambient sunlight and isolate the 909 Hz beacon frequency modulated onto the carrier.</p>
+          <div class="placeholder medium">
+            <div class="ph-icon">📡</div>
+            <strong>Insert IR Detection Sketch</strong>
+            <span>Top-view diagram showing sensor placement, detection cone, and beacon orientation</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Circuit Development</h4>
+          <div class="two-col">
+            <div>
+              <h4 style="margin-bottom:0.5rem;">Initial Circuit</h4>
+              <div class="placeholder medium">
+                <div class="ph-icon">⚡</div>
+                <strong>Insert Initial Circuit Diagram</strong>
+                <span>First-pass IR detection circuit schematic</span>
+              </div>
+            </div>
+            <div>
+              <h4 style="margin-bottom:0.5rem;">Final Circuit</h4>
+              <div class="placeholder medium">
+                <div class="ph-icon">⚡</div>
+                <strong>Insert Final Circuit Diagram</strong>
+                <span>Revised IR detection circuit with filter stage</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Challenges</h4>
+          <div class="placeholder short">
+            <div class="ph-icon">📝</div>
+            <strong>Insert Sensor Debugging Notes</strong>
+            <span>Topics: sensor noise · ambient light interference · alignment issues at different distances</span>
+          </div>
+        </div>
+      </div><!-- /tab-ir -->
+
+      <!-- ─── TAB: LINE SENSOR ─── -->
+      <div id="tab-line" class="tab-content">
+        <h3>Line Following System</h3>
+
+        <div class="subsection">
+          <h4>Goal</h4>
+          <p>Detect and follow the centerline tape to guide the robot from its aligned position toward the scoring zone.</p>
+        </div>
+
+        <div class="subsection">
+          <h4>Approach</h4>
+          <p>We use three TCRT5000 reflective IR sensors mounted on the underside of the robot chassis:</p>
+          <ul>
+            <li><strong>Left sensor</strong> — detects deviation to the left of the tape</li>
+            <li><strong>Middle sensor</strong> — tracks the centerline directly</li>
+            <li><strong>Right sensor</strong> — detects deviation to the right of the tape</li>
+          </ul>
+          <p>The sensors detect contrast between the black tape and the light-colored curling sheet surface.</p>
+          <div class="placeholder medium">
+            <div class="ph-icon">〰️</div>
+            <strong>Insert Line Sensor Sketch</strong>
+            <span>Bottom-view diagram of robot showing sensor positions and detection zones</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Code</h4>
+          <div class="placeholder short code-ph">
+            <div class="ph-icon">💻</div>
+            <strong>Insert Line Following Code</strong>
+            <span>Arduino sketch — sensor reads, threshold logic, and motor correction</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Circuit</h4>
+          <div class="placeholder medium">
+            <div class="ph-icon">⚡</div>
+            <strong>Insert Final Line Sensor Circuit</strong>
+            <span>Schematic showing TCRT5000 sensors with pull-up resistors and Arduino analog inputs</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Troubleshooting</h4>
+          <div class="placeholder short">
+            <div class="ph-icon">📝</div>
+            <strong>Insert Troubleshooting Notes</strong>
+            <span>Topics: sensor threshold tuning · false detections on seams · sensor spacing optimization</span>
+          </div>
+        </div>
+      </div><!-- /tab-line -->
+
+      <!-- ─── TAB: MOTOR DRIVING ─── -->
+      <div id="tab-motor" class="tab-content">
+        <h3>Motor Drive System</h3>
+
+        <div class="subsection">
+          <h4>Goal</h4>
+          <p>Provide controlled, reliable motion for both alignment scanning rotation and forward navigation along the centerline.</p>
+        </div>
+
+        <div class="subsection">
+          <h4>Approach</h4>
+          <p>The drive system uses:</p>
+          <ul>
+            <li><strong>TT yellow DC motors</strong> — one per driven wheel, lightweight and adequate torque for the robot mass</li>
+            <li><strong>L298N dual H-bridge motor driver</strong> — controls motor direction and speed</li>
+            <li><strong>Arduino PWM outputs</strong> — generate speed control signals to the L298N enable pins</li>
+          </ul>
+          <p>The L298N driver accepts digital direction signals and a PWM enable signal, allowing the Arduino to independently control both motors for differential steering and rotation.</p>
+          <div class="placeholder medium">
+            <div class="ph-icon">⚡</div>
+            <strong>Insert Motor Driver Circuit</strong>
+            <span>Schematic showing L298N wiring to Arduino, motors, and power supply</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Code</h4>
+          <div class="placeholder short code-ph">
+            <div class="ph-icon">💻</div>
+            <strong>Insert Motor Control Code</strong>
+            <span>Arduino functions for forward, reverse, turn left/right, and stop with PWM speed values</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Troubleshooting</h4>
+          <div class="placeholder short">
+            <div class="ph-icon">📝</div>
+            <strong>Insert Motor Debugging Notes</strong>
+            <span>Topics: motor imbalance between left/right · power distribution under load · wheel slip on playing surface</span>
+          </div>
+        </div>
+      </div><!-- /tab-motor -->
+
+      <!-- ─── TAB: ASSEMBLY ─── -->
+      <div id="tab-assembly" class="tab-content">
+        <h3 id="assembly">Robot Assembly</h3>
+
+        <div class="subsection">
+          <h4>Parts List</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Description</th>
+                <th>Qty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Arduino Uno</td><td>Main microcontroller — runs state machine and sensor logic</td><td>1</td></tr>
+              <tr><td>TT DC Motors</td><td>Yellow gear motors for differential drive</td><td>2</td></tr>
+              <tr><td>9G Servo Motor</td><td>Controls puck release gate mechanism</td><td>1</td></tr>
+              <tr><td>IR Sensors (TSOP)</td><td>Detect 909 Hz beacon signal for field orientation</td><td>2</td></tr>
+              <tr><td>TCRT5000 Sensors</td><td>Reflective IR sensors for line following</td><td>3</td></tr>
+              <tr><td>L298N Motor Driver</td><td>Dual H-bridge driver for PWM motor control</td><td>1</td></tr>
+              <tr><td>Battery Pack</td><td>Power supply for motors and logic</td><td>1</td></tr>
+              <tr><td>3D Printed Slide</td><td>53° gravity slide for puck release mechanism</td><td>1</td></tr>
+              <tr><td>Laser-cut Chassis</td><td>Main robot frame — acrylic or plywood</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="subsection">
+          <h4>Build Process</h4>
+          <p>The slide and motor mounting brackets were <strong>3D printed</strong>, enabling rapid iteration on geometry between test sessions. The main chassis was <strong>laser cut</strong> from sheet material, providing precise hole placement for motor and sensor alignment while keeping weight low.</p>
+          <p>All electronics were mounted on the chassis with standoffs, and wiring was routed to minimize interference between the IR sensors and motor drive signals.</p>
+        </div>
+
+        <div class="subsection">
+          <h4>Final Robot</h4>
+          <div class="placeholder tall">
+            <div class="ph-icon">🤖</div>
+            <strong>Insert Final Robot Photo</strong>
+            <span>High-quality photo of completed robot — top view and isometric view</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Lessons Learned</h4>
+          <div class="placeholder short">
+            <div class="ph-icon">💡</div>
+            <strong>Insert Project Reflections</strong>
+            <span>Topics: integration challenges · sensor calibration · value of simple mechanisms · state machine debugging</span>
+          </div>
+        </div>
+      </div><!-- /tab-assembly -->
+
+    </div><!-- /tabs-wrapper -->
   </div>
 </section>
 
-<!-- ════════════════════════════ PROCESS ════════════════════════════ -->
-<section id="process">
-  <div class="container">
-    <div class="section-label">Project Process</div>
-    <h2>Process, Milestones &amp; MVP Management</h2>
-
-    <h3>Project Timeline</h3>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div>
-          <div class="tl-date">Week [N] — [Date]</div>
-          <div class="tl-title">Initial Design Review</div>
-          <div class="tl-body">Selected design concept. Defined subsystems and assigned responsibilities. [Add detail.]</div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div>
-          <div class="tl-date">Week [N] — [Date]</div>
-          <div class="tl-title">Chassis Fabrication Complete</div>
-          <div class="tl-body">[What was done, what changed from original plan, any early surprises.]</div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div>
-          <div class="tl-date">Week [N] — [Date]</div>
-          <div class="tl-title">Electronics Integrated — First Drive Test</div>
-          <div class="tl-body">[Describe first successful test. What worked? What immediately broke?]</div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div>
-          <div class="tl-date">Week [N] — [Date]</div>
-          <div class="tl-title">State Machine Running End-to-End</div>
-          <div class="tl-body">[When did autonomous behavior first work? What was the key breakthrough?]</div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div>
-          <div class="tl-date">Week [N] — [Date]</div>
-          <div class="tl-title">Final Tune &amp; Competition Day</div>
-          <div class="tl-body">[Last-minute fixes, competition result, memorable moment.]</div>
-        </div>
-      </div>
-
-    </div>
-
-    <h3>MVP vs. Feature List</h3>
-    <p>
-      <!-- REPLACE: Describe how you managed scope -->
-      [Explain the full "wishlist" of features you identified early on, what you defined as the Minimum Viable Product, and how you made trade-off decisions as deadlines approached.]
-    </p>
-
-    <div class="card-row">
-      <div class="card green">
-        <h4>✓ MVP — Achieved</h4>
-        <p>
-          [List the minimum required behaviors your robot achieved]<br>
-          · [MVP feature 1]<br>
-          · [MVP feature 2]<br>
-          · [MVP feature 3]
-        </p>
-      </div>
-      <div class="card yellow">
-        <h4>⚡ Stretch Goals — Attempted</h4>
-        <p>
-          [Features you tried but only partially achieved]<br>
-          · [Stretch feature 1]<br>
-          · [Stretch feature 2]
-        </p>
-      </div>
-      <div class="card red">
-        <h4>✗ Cut from Scope</h4>
-        <p>
-          [Features that were cut — and why]<br>
-          · [Cut feature 1] — [why]<br>
-          · [Cut feature 2] — [why]
-        </p>
-      </div>
-    </div>
-
-    <h3>Team &amp; Resource Management</h3>
-    <p>
-      <!-- REPLACE -->
-      [How did you divide work? Did everyone own a subsystem? How did you coordinate integration? Any tools — Slack, shared repo, shared doc?]
-    </p>
-  </div>
-</section>
-
-<!-- ════════════════════════════ REFLECTIONS ════════════════════════════ -->
-<section id="reflections">
-  <div class="container">
-    <div class="section-label">Reflections</div>
-    <h2>What We Learned — Advice for Next Year</h2>
-
-    <p>
-      <!-- REPLACE: Intro -->
-      [A sentence or two setting up this section — what kind of year/experience this was and your general takeaway.]
-    </p>
-
-    <h3>What Worked Well</h3>
-    <div class="card-row">
-      <div class="card green">
-        <h4>[Subsystem / Decision]</h4>
-        <p>[Why it worked well and what made it successful.]</p>
-      </div>
-      <div class="card green">
-        <h4>[Another win]</h4>
-        <p>[Describe.]</p>
-      </div>
-      <div class="card green">
-        <h4>[Another win]</h4>
-        <p>[Describe.]</p>
-      </div>
-    </div>
-
-    <h3>Integration Challenges</h3>
-    <p>
-      <!-- REPLACE -->
-      [Where did things break down when you tried to put subsystems together? Mechanical-electrical interference? Software timing issues? Sensor noise? Describe the challenge and how you resolved it.]
-    </p>
-
-    <div class="card-row">
-      <div class="card red">
-        <h4>[Challenge 1]</h4>
-        <p>[What happened and what you did about it.]</p>
-      </div>
-      <div class="card red">
-        <h4>[Challenge 2]</h4>
-        <p>[What happened and what you did about it.]</p>
-      </div>
-    </div>
-
-    <h3>Code Tricks &amp; Arduino/Library Fixes</h3>
-    <p>
-      <!-- REPLACE: Intro to your code learnings -->
-      [Describe any bugs you hit with Arduino libraries, timing issues, interrupt conflicts, memory constraints, etc., and the tricks you used to fix them.]
-    </p>
-
-    <!-- EXAMPLE CODE BLOCK — replace with your own snippet -->
-    <div class="code-block">
-<span class="comment">// TIP: millis()-based timing instead of delay() keeps the state machine responsive</span>
-<span class="keyword">unsigned long</span> lastSensorCheck = <span class="num">0</span>;
-<span class="keyword">const unsigned long</span> SENSOR_INTERVAL = <span class="num">20</span>; <span class="comment">// ms</span>
-
-<span class="keyword">void</span> loop() {
-  <span class="keyword">if</span> (millis() - lastSensorCheck >= SENSOR_INTERVAL) {
-    lastSensorCheck = millis();
-    readSensors();
-  }
-  runStateMachine();
-}
-    </div>
-
-    <div class="tip">
-      <strong>Tip for future teams:</strong> [e.g., "Never use delay() inside your main loop — it blocks everything. Use millis() for all timing. We lost two days debugging phantom sensor behavior that was actually just our loop being blocked by delay() calls inside the servo library."]
-    </div>
-
-    <!-- Add more code tips as needed -->
-    <p>
-      <!-- REPLACE: Describe another code trick -->
-      [e.g., "We used a simple circular buffer to average IR sensor readings over 5 samples, which almost completely eliminated false triggers from electrical noise near the motor driver."]
-    </p>
-
-    <div class="code-block">
-<span class="comment">// Circular buffer average for noisy IR sensor</span>
-<span class="keyword">const int</span> BUF_SIZE = <span class="num">5</span>;
-<span class="keyword">int</span> irBuf[BUF_SIZE];
-<span class="keyword">int</span> bufIdx = <span class="num">0</span>;
-
-<span class="keyword">int</span> smoothedIR() {
-  irBuf[bufIdx++ % BUF_SIZE] = analogRead(IR_PIN);
-  <span class="keyword">long</span> sum = <span class="num">0</span>;
-  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="num">0</span>; i &lt; BUF_SIZE; i++) sum += irBuf[i];
-  <span class="keyword">return</span> sum / BUF_SIZE;
-}
-    </div>
-
-    <h3>If We Did It Again</h3>
-    <p>
-      <!-- REPLACE -->
-      [What would you do differently? What would you keep exactly the same? What do you wish you had known on Day 1?]
-    </p>
-
-    <ul>
-      <li><strong>[Advice 1]</strong> — [Explanation]</li>
-      <li><strong>[Advice 2]</strong> — [Explanation]</li>
-      <li><strong>[Advice 3]</strong> — [Explanation]</li>
-      <li><strong>[Advice 4]</strong> — [Explanation]</li>
-    </ul>
-
-    <div class="tip">
-      <strong>Our #1 piece of advice:</strong> [Single most important thing you'd tell next year's team in one or two sentences.]
-    </div>
-
-    <h3>Final Thoughts</h3>
-    <p>
-      <!-- REPLACE -->
-      [A closing paragraph — what this project meant to your team, what you're most proud of, and any parting words for the next cohort.]
-    </p>
-
-  </div>
-</section>
-
-<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════ FOOTER -->
 <footer>
-  <p><strong>[Team Name]</strong> &nbsp;·&nbsp; ME210 — Introduction to Mechatronics &nbsp;·&nbsp; Stanford University, Winter 2026</p>
-  <p style="margin-top:0.5rem;">Billy &nbsp;·&nbsp; Carlos &nbsp;·&nbsp; Alex &nbsp;·&nbsp; Ana</p>
+  <strong>ME210 Curling DROID</strong><br>
+  Introduction to Mechatronics · Stanford University · Winter 2026<br>
+  Ana · Billy · Carlos · Alex
 </footer>
+
+<script>
+  function openTab(evt, tabId) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    evt.currentTarget.classList.add('active');
+  }
+</script>
 
 </body>
 </html>
