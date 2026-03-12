@@ -665,12 +665,9 @@
 
           <div class="sub">
             <h4>Design Intent</h4>
-            <p>Release pucks reliably into the scoring zone while keeping the mechanical system simple enough to build, test, and fix quickly. The design must work on first attempt during competition — no human reset is possible.</p>
-            <ul>
-              <li>Gravity-fed delivery eliminates motors and timing complexity</li>
-              <li>Single servo minimizes control overhead</li>
-              <li>Fixed ramp angle simplifies puck trajectory calculation</li>
-            </ul>
+            <p>The goal of the puck release mechanism was to deliver pucks reliably into the scoring zone while keeping the mechanical system simple enough to build, test, and iterate quickly. Because the project timeline was short and subsystem integration was critical, we prioritized a design that minimized moving parts and complex control logic.</p>
+            <p>To achieve this, we chose a gravity-fed slide mechanism. This approach allows the pucks to travel down a ramp once a gate is opened, eliminating the need for additional motors, launchers, or complex timing control. The simplicity of gravity-driven motion made the system easier to debug and more robust during testing.</p>
+            <p>The gate is controlled by two servo motors, which allowed us to hold the pucks in place without requiring additional printed parts or mechanisms to resist the puck load. Using two servos also reduced the need to stall a single servo under load, improving reliability.</p>
           </div>
 
           <div class="sub">
@@ -730,18 +727,21 @@
             </div>
 
             <div style="margin-top: 1.5rem;">
-              <p><strong>Iteration 1 — MVP (53° slide):</strong> First functional prototype. Pucks released but landed short of center.</p>
+              <h4 style="margin-bottom: 0.6rem;">Design Iteration</h4>
+              <p>In our first iteration, the servos were positioned closer to the ground near the base of the ramp. While this configuration successfully demonstrated the minimum viable product, it produced puck trajectories that were shorter than desired and occasionally led to minor alignment issues as the pucks exited the gate.</p>
+              <p>After confirming that the gravity-fed slide concept worked reliably, we refined the design by moving the servos higher and extending the length of the slide. This modification allowed the pucks to settle more smoothly before leaving the ramp and significantly improved their final travel distance toward the target.</p>
+              <p>These adjustments resulted in more consistent puck placement while preserving the simplicity of the mechanism, which was a key design priority for rapid testing and iteration.</p>
+              <p>Finally, we used a fixed ramp angle to keep the puck trajectory consistent. By tuning the ramp geometry rather than relying on active control, we were able to achieve repeatable puck placement while keeping the subsystem mechanically simple.</p>
               <div class="grid-2" style="margin-top: 1rem;">
                 <div>
-                  <img src="photos/TestingSlide.png" alt="MVP 53° gravity slide during testing" class="site-img" />
-                  <p class="img-cap">Figure 4 — MVP 53° slide during testing</p>
+                  <img src="photos/TestingSlide.png" alt="First robot — MVP 53° gravity slide with servos at base" class="site-img" />
+                  <p class="img-cap">Figure 4 — First robot: MVP 53° slide, servos positioned at base of ramp</p>
                 </div>
                 <div>
-                  <img src="photos/DesignIt1.png" alt="Updated slide design — extended length, raised servo" class="site-img" />
-                  <p class="img-cap">Figure 5 — Revised slide geometry: extended length, raised servo mount</p>
+                  <img src="photos/DesignIt1.png" alt="Second robot — revised slide with raised servos and extended ramp length" class="site-img" />
+                  <p class="img-cap">Figure 5 — Second robot: servos raised, slide extended for improved puck travel distance</p>
                 </div>
               </div>
-              <p style="margin-top: 1rem;"><strong>Iteration 2:</strong> Servo mount raised and slide length extended so pucks land closer to the target center. No change to ramp angle preserved the release reliability of Iteration 1.</p>
             </div>
           </div>
 
@@ -964,7 +964,8 @@
             <h4>Approach</h4>
             <div class="grid-2" style="align-items: start;">
               <div>
-                <p>The L298N accepts two digital direction pins and one PWM enable pin per motor channel. The Arduino sets direction and writes an analog value (0–255) to the enable pin to control speed. Rotating left and right for SCANNING is achieved by driving motors in opposite directions at equal speed.</p>
+                <p>The robot uses a differential drive system powered by two gear motors, which allow it to drive forward, rotate in place during IR scanning, and make small steering corrections while line following. Our original plan was to use TT yellow DC gear motors, but after testing we found that they did not provide enough torque for the full robot under real operating conditions. To achieve more reliable motion, we switched to Jameco Part No. 151442 motors, which gave us the torque needed to move the robot more consistently.</p>
+                <p>Motor direction and speed are controlled through an L298N dual H-bridge motor driver, which receives PWM and direction commands from the Arduino. This setup gave us a simple and robust way to command forward motion, turning, and line-correction maneuvers while integrating cleanly with the rest of the control system.</p>
               </div>
               <div>
                 <img src="photos/MotorDriverCricuit.png" alt="L298N motor driver circuit schematic" class="site-img" />
