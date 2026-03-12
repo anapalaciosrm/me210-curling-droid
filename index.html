@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ME210 Curling DROID — Winter 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* ── TOKENS ── */
     :root {
@@ -31,7 +34,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       background: var(--surface-2);
       color: var(--ink);
       line-height: 1.65;
@@ -1068,7 +1071,8 @@
                 </thead>
                 <tbody>
                   <tr><td>Arduino Uno</td><td>Main microcontroller — runs FSM, reads sensors, commands actuators</td><td>1</td></tr>
-                  <tr><td>TT DC Motors</td><td>Yellow gear motors — differential drive, one per wheel</td><td>2</td></tr>
+                  <tr><td>Jameco 151442 Motors</td><td>Gear motors — differential drive, one per side</td><td>2</td></tr>
+                  <tr><td>Wheels</td><td>Paired with Jameco 151442 motors for ground contact and traction</td><td>2</td></tr>
                   <tr><td>9G Servo Motor</td><td>Controls puck release gate</td><td>1</td></tr>
                   <tr><td>TSOP IR Sensors</td><td>Beacon detection — one left, one right</td><td>2</td></tr>
                   <tr><td>TCRT5000 Sensors</td><td>Reflective IR line sensors — left, center, right</td><td>3</td></tr>
