@@ -440,6 +440,21 @@
     .verdict-reject { color: #c0392b; }
     .verdict-select { color: #27ae60; }
 
+    /* ── SITE IMAGES ── */
+    .site-img {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+    .img-cap {
+      font-size: 0.72rem;
+      color: var(--ink-3);
+      text-align: center;
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--ink);
@@ -485,11 +500,8 @@
       <div class="team-chip"><span class="chip-name">Alex</span><span class="chip-role">EE</span></div>
     </div>
 
-    <div class="ph hero-ph">
-      <div class="ph-icon">📷</div>
-      <div class="ph-title">Insert Team Photo Here</div>
-      <div class="ph-desc">Team photo with robot — all four members</div>
-    </div>
+    <img src="photos/TeamPhoto.png" alt="Team photo — Ana, Billy, Carlos, Alex with the Curling DROID"
+         style="width:100%;max-width:780px;border-radius:var(--radius-lg);border:2px solid rgba(255,255,255,.15);box-shadow:0 8px 40px rgba(0,0,0,.5);display:block;margin:0 auto;" />
   </div>
 </div>
 
@@ -552,10 +564,9 @@
         </p>
       </div>
 
-      <div class="ph tall" style="margin-bottom: 2rem;">
-        <div class="ph-icon">📊</div>
-        <div class="ph-title">Insert State Diagram Here</div>
-        <div class="ph-desc">Full FSM diagram — all states, transitions, and triggering events labeled</div>
+      <div style="margin-bottom: 2rem;">
+        <img src="photos/StateDiagram.png" alt="Robot finite state machine diagram" class="site-img" />
+        <p class="img-cap">Figure 1 — FSM diagram: all states, transitions, and triggering events</p>
       </div>
 
       <div class="grid-2" style="margin-bottom: 2rem; align-items: start;">
@@ -669,10 +680,9 @@
                 <p>We selected a gravity slide because it has no moving parts beyond the gate servo, making it highly reliable. The slide is 3D printed at a fixed angle; the servo rotates 90° to open and close the gate flap.</p>
                 <p>Pucks are loaded vertically into the magazine before each run. The gate holds them against the slide surface until release.</p>
               </div>
-              <div class="ph medium">
-                <div class="ph-icon">⚙️</div>
-                <div class="ph-title">Insert Puck Release CAD Here</div>
-                <div class="ph-desc">CAD render or annotated sketch showing servo gate, slide geometry, and puck stack</div>
+              <div>
+                <img src="photos/TestingPuckRelease.png" alt="Puck release mechanism during testing" class="site-img" />
+                <p class="img-cap">Figure 2 — Puck release mechanism during testing</p>
               </div>
             </div>
           </div>
@@ -682,10 +692,7 @@
             <p style="margin-bottom: 1.25rem;">Three concepts were evaluated before committing to the gravity slide approach.</p>
             <div class="grid-3">
               <div class="concept-card">
-                <div class="ph short">
-                  <div class="ph-icon">🔄</div>
-                  <div class="ph-title">Insert Sketch</div>
-                </div>
+                <img src="photos/CaruselConcept.png" alt="Carousel dispenser concept sketch" class="site-img" style="border-radius:var(--radius-md) var(--radius-md) 0 0;border-bottom:none;" />
                 <div class="concept-card-body">
                   <h3>Carousel Dispenser</h3>
                   <p>Rotating drum feeds pucks one at a time through a fixed exit port.</p>
@@ -693,21 +700,15 @@
                 </div>
               </div>
               <div class="concept-card">
-                <div class="ph short">
-                  <div class="ph-icon">🎯</div>
-                  <div class="ph-title">Insert Sketch</div>
-                </div>
+                <img src="photos/PushConcept.png" alt="Push mechanism concept sketch" class="site-img" style="border-radius:var(--radius-md) var(--radius-md) 0 0;border-bottom:none;" />
                 <div class="concept-card-body">
-                  <h3>Spring Launcher</h3>
-                  <p>Spring or rubber-band stores energy and propels pucks forward at release.</p>
-                  <p class="concept-verdict verdict-reject">✕ Rejected — inconsistent, hard to calibrate</p>
+                  <h3>Push Mechanism</h3>
+                  <p>Linear actuator pushes pucks forward into the scoring zone.</p>
+                  <p class="concept-verdict verdict-reject">✕ Rejected — less precise, harder to control</p>
                 </div>
               </div>
               <div class="concept-card">
-                <div class="ph short">
-                  <div class="ph-icon">📐</div>
-                  <div class="ph-title">Insert Sketch</div>
-                </div>
+                <img src="photos/TestingSlide.png" alt="Gravity slide MVP being tested" class="site-img" style="border-radius:var(--radius-md) var(--radius-md) 0 0;border-bottom:none;" />
                 <div class="concept-card-body">
                   <h3>Gravity Slide — MVP</h3>
                   <p>53° ramp with servo gate. Gravity delivers pucks once gate opens.</p>
@@ -716,18 +717,28 @@
               </div>
             </div>
 
+            <h4 style="margin-top:1.5rem;margin-bottom:0.6rem;">Push Mechanism — Detail</h4>
+            <div class="grid-2">
+              <div>
+                <img src="photos/PushMech1.png" alt="Push mechanism labeled view 1" class="site-img" />
+                <p class="img-cap">Figure 3a — Push mechanism, labeled view 1</p>
+              </div>
+              <div>
+                <img src="photos/PushMech2.png" alt="Push mechanism labeled view 2" class="site-img" />
+                <p class="img-cap">Figure 3b — Push mechanism, labeled view 2</p>
+              </div>
+            </div>
+
             <div style="margin-top: 1.5rem;">
               <p><strong>Iteration 1 — MVP (53° slide):</strong> First functional prototype. Pucks released but landed short of center.</p>
               <div class="grid-2" style="margin-top: 1rem;">
-                <div class="ph medium">
-                  <div class="ph-icon">📐</div>
-                  <div class="ph-title">Insert MVP Slide Design</div>
-                  <div class="ph-desc">Initial 53° slide geometry — dimensions labeled</div>
+                <div>
+                  <img src="photos/TestingSlide.png" alt="MVP 53° gravity slide during testing" class="site-img" />
+                  <p class="img-cap">Figure 4 — MVP 53° slide during testing</p>
                 </div>
-                <div class="ph medium">
-                  <div class="ph-icon">🔧</div>
-                  <div class="ph-title">Insert Updated Slide Design</div>
-                  <div class="ph-desc">Revised design — raised servo, extended slide length for better targeting</div>
+                <div>
+                  <img src="photos/DesignIt1.png" alt="Updated slide design — extended length, raised servo" class="site-img" />
+                  <p class="img-cap">Figure 5 — Revised slide geometry: extended length, raised servo mount</p>
                 </div>
               </div>
               <p style="margin-top: 1rem;"><strong>Iteration 2:</strong> Servo mount raised and slide length extended so pucks land closer to the target center. No change to ramp angle preserved the release reliability of Iteration 1.</p>
@@ -781,10 +792,15 @@
                 <p>Each IR sensor includes an analog high-pass filter stage before the Arduino input. The filter passes only the 909 Hz modulated beacon carrier while attenuating DC ambient light. The Arduino reads each sensor output digitally — above threshold = beacon detected.</p>
                 <p>During SCANNING the robot rotates slowly. As the left sensor triggers, it slows; when both trigger, it stops and transitions to SEEKING_TAPE.</p>
               </div>
-              <div class="ph medium">
-                <div class="ph-icon">📡</div>
-                <div class="ph-title">Insert IR Detection Sketch</div>
-                <div class="ph-desc">Top-view showing sensor placement, detection cone width, and beacon geometry relative to robot</div>
+              <div class="grid-2" style="margin-top:0.5rem;">
+                <div>
+                  <img src="photos/IRSensorSketch1.png" alt="IR sensor sketch — view 1" class="site-img" />
+                  <p class="img-cap">Figure 6 — IR sensor placement and detection geometry</p>
+                </div>
+                <div>
+                  <img src="photos/IrSensorSketch2.png" alt="IR sensor sketch — view 2" class="site-img" />
+                  <p class="img-cap">Figure 7 — IR sensor signal path and logic</p>
+                </div>
               </div>
             </div>
           </div>
@@ -795,10 +811,9 @@
             <div class="grid-2">
               <div>
                 <h4 style="margin-bottom:0.5rem;">Initial Circuit</h4>
-                <div class="ph medium">
-                  <div class="ph-icon">⚡</div>
-                  <div class="ph-title">Insert Initial Circuit Diagram</div>
-                  <div class="ph-desc">First-pass IR detection schematic — note filtering stage</div>
+                <div>
+                  <img src="photos/InitialIRCircuit.png" alt="Initial IR detection circuit schematic" class="site-img" />
+                  <p class="img-cap">Figure 8 — Initial IR detection circuit schematic</p>
                 </div>
               </div>
               <div>
@@ -867,10 +882,15 @@
               <div>
                 <p>Each TCRT5000 emits IR and reads reflected intensity. Black tape absorbs IR and returns a low reading; the light sheet surface reflects well and returns high. The Arduino reads each sensor and applies a lookup table to decide the correction direction and magnitude.</p>
               </div>
-              <div class="ph medium">
-                <div class="ph-icon">〰️</div>
-                <div class="ph-title">Insert Line Sensor Layout Sketch</div>
-                <div class="ph-desc">Bottom-view of chassis showing left/center/right sensor positions, tape width reference</div>
+              <div class="grid-2" style="margin-top:0.5rem;">
+                <div>
+                  <img src="photos/LineFollowingSketch.png" alt="Line sensor layout sketch" class="site-img" />
+                  <p class="img-cap">Figure 9 — Line sensor placement diagram</p>
+                </div>
+                <div>
+                  <img src="photos/LineFollowing1.png" alt="Line following system during testing" class="site-img" />
+                  <p class="img-cap">Figure 10 — Line following in testing</p>
+                </div>
               </div>
             </div>
           </div>
@@ -946,10 +966,9 @@
               <div>
                 <p>The L298N accepts two digital direction pins and one PWM enable pin per motor channel. The Arduino sets direction and writes an analog value (0–255) to the enable pin to control speed. Rotating left and right for SCANNING is achieved by driving motors in opposite directions at equal speed.</p>
               </div>
-              <div class="ph medium">
-                <div class="ph-icon">⚡</div>
-                <div class="ph-title">Insert Motor Driver Circuit</div>
-                <div class="ph-desc">Schematic — L298N connections to Arduino, motors, power supply, and decoupling capacitors</div>
+              <div>
+                <img src="photos/MotorDriverCricuit.png" alt="L298N motor driver circuit schematic" class="site-img" />
+                <p class="img-cap">Figure 11 — L298N motor driver circuit schematic</p>
               </div>
             </div>
           </div>
