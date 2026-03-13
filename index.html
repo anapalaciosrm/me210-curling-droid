@@ -1012,37 +1012,27 @@
           </div>
 
           <div class="sub">
-            <h4>Final Robot</h4>
-            <div class="grid-2">
-              <div class="ph tall">
-                <div class="ph-icon">🤖</div>
-                <div class="ph-title">Insert Final Robot Photo — Top View</div>
-                <div class="ph-desc">Clear top-down view showing component layout</div>
-              </div>
-              <div class="ph tall">
-                <div class="ph-icon">🤖</div>
-                <div class="ph-title">Insert Final Robot Photo — Isometric</div>
-                <div class="ph-desc">Three-quarter view showing slide, gate, and chassis profile</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sub">
-            <h4>Integration Notes</h4>
-            <div class="ph short">
-              <div class="ph-icon">🔗</div>
-              <div class="ph-title">Insert Integration Notes</div>
-              <div class="ph-desc">Key integration steps — sensor calibration order, final wiring checks, pre-run checklist</div>
-            </div>
-          </div>
-
-          <div class="sub">
-            <h4>Lessons for Future Teams</h4>
-            <div class="ph short">
-              <div class="ph-icon">💡</div>
-              <div class="ph-title">Insert Project Reflections</div>
-              <div class="ph-desc">Integration challenges · sensor calibration sequence · value of simple mechanisms · FSM debugging approach</div>
-            </div>
+            <h4>Tips for Future Teams</h4>
+            <ol style="display:flex;flex-direction:column;gap:1rem;padding-left:1.2rem;">
+              <li>
+                <strong>Test subsystems independently before integrating.</strong> This was one of the most valuable things we did. Knowing each subsystem worked in isolation made full assembly dramatically smoother — when something broke at the robot level, we could rule out entire sections immediately.
+              </li>
+              <li>
+                <strong>Design your first robot to last.</strong> If you are building an MVP with plans to improve it, make sure the core structure can absorb changes without requiring a full teardown. We iterated on our slide, motor mounts, and chassis — but replacing the chassis and mounts meant disassembling and reassembling the entire drive system. In practice, we built two robots and faced twice the debugging. A sturdier, more modular first build would have saved significant time.
+              </li>
+              <li>
+                <strong>Look at what other groups are doing before finalizing your parts.</strong> Talking to other teams early gave us useful perspectives on component choices and design strategies. Seeing how others solved similar problems sparked ideas we would not have reached on our own — both in terms of reliability and creativity.
+              </li>
+              <li>
+                <strong>Don't hesitate to ask TAs for help.</strong> They have seen nearly every bug that comes up in this project and are always willing to help you think through it. Going to them early is almost always faster than spending hours debugging alone.
+              </li>
+              <li>
+                <strong>Use an oscilloscope when debugging sensors — especially IR.</strong> When we had trouble with the IR sensor, our first instinct was to stare at the connections and try random fixes. The right move is to reach for the oscilloscope first: it tells you exactly whether the signal is present, noisy, or malformed, and it turns a guessing game into a diagnosis.
+              </li>
+              <li>
+                <strong>IR sensors are sensitive to ambient light conditions.</strong> They can be oversaturated or undersaturated depending on the environment — think back to the gain concepts from class. We had to swap a resistor from 10 kΩ to 15 kΩ between check-off and competition because the lighting in the room had changed. Our circuit was correct all along; the environment shifted. Always re-characterize your IR thresholds in the actual competition space.
+              </li>
+            </ol>
           </div>
 
         </div><!-- /tab-assembly -->
