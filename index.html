@@ -1012,8 +1012,9 @@
           </div>
 
           <div class="sub">
-            <h4>Tips for Future Teams</h4>
-            <ol style="display:flex;flex-direction:column;gap:1rem;padding-left:1.2rem;">
+            <div class="callout" style="border-left: 4px solid var(--accent); background: var(--surface-1); padding: 1.1rem 1.25rem; border-radius: var(--radius-md);">
+            <p style="font-weight:600; margin-bottom:0.75rem;">Quick Tips</p>
+            <ol style="display:flex;flex-direction:column;gap:1rem;padding-left:1.2rem;margin:0;">
               <li>
                 <strong>Test subsystems independently before integrating.</strong> This was one of the most valuable things we did. Knowing each subsystem worked in isolation made full assembly dramatically smoother — when something broke at the robot level, we could rule out entire sections immediately.
               </li>
@@ -1033,6 +1034,7 @@
                 <strong>IR sensors are sensitive to ambient light conditions.</strong> They can be oversaturated or undersaturated depending on the environment — think back to the gain concepts from class. We had to swap a resistor from 10 kΩ to 15 kΩ between check-off and competition because the lighting in the room had changed. Our circuit was correct all along; the environment shifted. Always re-characterize your IR thresholds in the actual competition space.
               </li>
             </ol>
+            </div>
           </div>
 
         </div><!-- /tab-assembly -->
