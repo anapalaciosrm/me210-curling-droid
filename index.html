@@ -953,38 +953,10 @@
           </div>
 
           <div class="sub">
-            <h4>Code</h4>
-            <div class="ph medium code-ph">
-              <div class="ph-icon">💻</div>
-              <div class="ph-title">Insert Motor Control Code</div>
-              <div class="ph-desc">Arduino functions — forward(speed), reverse(speed), turnLeft(speed), turnRight(speed), stop()</div>
-            </div>
-          </div>
-
-          <div class="sub">
-            <h4>Integration Notes</h4>
-            <div class="ph short">
-              <div class="ph-icon">🔗</div>
-              <div class="ph-title">Insert Integration Notes</div>
-              <div class="ph-desc">How motor commands are issued from each FSM state — pin assignments and power rail notes</div>
-            </div>
-          </div>
-
-          <div class="sub">
-            <h4>Challenges</h4>
-            <div class="ph short">
-              <div class="ph-icon">📝</div>
-              <div class="ph-title">Insert Motor Debugging Notes</div>
-              <div class="ph-desc">Topics: left/right speed imbalance · voltage sag under load · wheel slip on playing surface</div>
-            </div>
-          </div>
-
-          <div class="sub">
-            <h4>Lessons for Future Teams</h4>
-            <div class="ph short">
-              <div class="ph-icon">💡</div>
-              <div class="ph-title">Insert Lessons Learned</div>
-              <div class="ph-desc">Speed calibration, power supply sizing, motor symmetry testing procedure</div>
+            <div class="callout" style="border-left: 4px solid var(--accent); background: var(--surface-1); padding: 1.1rem 1.25rem; border-radius: var(--radius-md);">
+              <p style="font-weight:600; margin-bottom:0.4rem;">Quick Tip — Motor Mounting and Wheel Fit</p>
+              <p>Over-tightening the motor mount screws is an easy mistake to make — too much clamping force on the motor body can restrict the internal gearing and cause erratic behavior or stalling under load. Snug is enough; the motors should be held firmly but not compressed.</p>
+              <p style="margin-top:0.6rem;">If we could iterate again, we would source wheels specifically sized for the Jameco 151442 shaft. The wheels we used were not matched to the motor shaft diameter, which meant they did not seat reliably — the fit was loose enough that the wheels would slip or wobble under load rather than transmitting torque cleanly. Getting the shaft-to-wheel interface right early saves significant debugging time later.</p>
             </div>
           </div>
 
