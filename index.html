@@ -909,45 +909,10 @@
           </div>
 
           <div class="sub">
-            <h4>Prototype Evolution</h4>
-            <div class="grid-2">
-              <div class="ph medium">
-                <div class="ph-icon">⚡</div>
-                <div class="ph-title">Insert Final Line Sensor Circuit</div>
-                <div class="ph-desc">Schematic — TCRT5000 with pull-up resistors and Arduino analog input connections</div>
-              </div>
-              <div class="ph medium">
-                <div class="ph-icon">📐</div>
-                <div class="ph-title">Insert Sensor Mounting Photo / Sketch</div>
-                <div class="ph-desc">Physical sensor placement on chassis underside — spacing and height above surface</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sub">
-            <h4>Code</h4>
-            <div class="ph medium code-ph">
-              <div class="ph-icon">💻</div>
-              <div class="ph-title">Insert Line Following Code</div>
-              <div class="ph-desc">Arduino sketch — sensor reads, threshold comparison, motor correction lookup table</div>
-            </div>
-          </div>
-
-          <div class="sub">
-            <h4>Challenges</h4>
-            <div class="ph short">
-              <div class="ph-icon">📝</div>
-              <div class="ph-title">Insert Troubleshooting Notes</div>
-              <div class="ph-desc">Topics: threshold tuning · false detection on surface seams · sensor spacing sensitivity</div>
-            </div>
-          </div>
-
-          <div class="sub">
-            <h4>Lessons for Future Teams</h4>
-            <div class="ph short">
-              <div class="ph-icon">💡</div>
-              <div class="ph-title">Insert Lessons Learned</div>
-              <div class="ph-desc">Optimal sensor height, threshold methodology, handling the stop-line detection case</div>
+            <div class="callout" style="border-left: 4px solid var(--accent); background: var(--surface-1); padding: 1.1rem 1.25rem; border-radius: var(--radius-md);">
+              <p style="font-weight:600; margin-bottom:0.4rem;">Quick Tip — What Actually Trips You Up</p>
+              <p>Line sensing is relatively simple in concept, but two things consistently reduce reliability in practice. The first is physical: if your sensors are not mounted securely, what looks like a circuit or code bug is often just a loose wire or a sensor that shifted position after assembly. Always rule out mechanical issues before debugging software.</p>
+              <p style="margin-top:0.6rem;">The second is in the code. As your state machine grows in complexity, it becomes easy to lose track of which state is commanding the motors and why. Stay faithful to your state diagram — if a behavior isn't in the diagram, it shouldn't be in the code. Invest early in specialized functions (one function per action, one function per sensor read) so each state stays readable and testable on its own.</p>
             </div>
           </div>
 
