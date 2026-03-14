@@ -836,31 +836,45 @@
                 <h4 style="margin-bottom:0.5rem;">Mounted IR Sensor</h4>
                 <img src="photos/MountedIR.jpg" alt="Mounted IR sensor on robot" class="site-img" />
                 <p class="img-cap">Figure 9 — Mounted IR sensor on robot</p>
-                <h4 style="margin-bottom:0.5rem;margin-top:1.25rem;">Final Circuit</h4>
-                <div class="ph medium">
-                  <div class="ph-icon">⚡</div>
-                  <div class="ph-title">Insert Final Circuit Diagram</div>
-                  <div class="ph-desc">Revised schematic with updated filter, component values annotated</div>
-                </div>
+                <h4 style="margin-bottom:0.5rem;margin-top:1.25rem;">Final IR Sensor</h4>
+                <img src="photos/finalIRSensor.png" alt="Final IR sensor build" class="site-img" />
+                <p class="img-cap">Figure 10 — Final IR sensor assembly</p>
               </div>
             </div>
           </div>
 
           <div class="sub">
-            <h4>Integration Notes</h4>
-            <div class="ph short">
-              <div class="ph-icon">🔗</div>
-              <div class="ph-title">Insert Integration Notes</div>
-              <div class="ph-desc">How IR detection connects to the FSM — which Arduino pins, how the event is posted</div>
-            </div>
-          </div>
-
-          <div class="sub">
-            <h4>Lessons for Future Teams</h4>
-            <div class="ph short">
-              <div class="ph-icon">💡</div>
-              <div class="ph-title">Insert Lessons Learned</div>
-              <div class="ph-desc">Threshold selection, sensor placement tradeoffs, filter design tips</div>
+            <h4>Program Walkthrough</h4>
+            <p style="margin-bottom:1rem;">The program is structured as a finite state machine. The main loop runs continuously, and each state checks its exit condition every iteration before transitioning to the next.</p>
+            <div style="display:flex;flex-direction:column;gap:0.85rem;">
+              <div style="display:grid;grid-template-columns:9rem 1fr;gap:0.6rem 1rem;align-items:start;">
+                <span style="font-weight:600;color:var(--accent);padding-top:0.05rem;">Beacon Search</span>
+                <p style="margin:0;">The robot spins in place while sampling the IR sensor, measuring the frequency of incoming pulses and checking whether they match the ~1 kHz signature of the beacon. Once a valid signal is detected, it locks onto that heading and stops spinning.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:9rem 1fr;gap:0.6rem 1rem;align-items:start;">
+                <span style="font-weight:600;color:var(--accent);padding-top:0.05rem;">Approach</span>
+                <p style="margin:0;">From the locked heading, the robot drives forward for a fixed duration, then pivots right to reorient itself. This maneuver positions the robot to intercept the vertical tape line. It then drives forward while monitoring all three tape sensors; as soon as any sensor detects tape, it transitions into line-following mode.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:9rem 1fr;gap:0.6rem 1rem;align-items:start;">
+                <span style="font-weight:600;color:var(--accent);padding-top:0.05rem;">PD Line Following</span>
+                <p style="margin:0;">Three sensors arranged side by side produce an error signal: negative when the line is to the left, zero when centered, positive when to the right. A PD controller converts this error into a steering correction that speeds up one motor and slows the other, keeping the robot centered on the tape.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:9rem 1fr;gap:0.6rem 1rem;align-items:start;">
+                <span style="font-weight:600;color:var(--accent);padding-top:0.05rem;">Hog Line Detection</span>
+                <p style="margin:0;">While line following, the program continuously checks whether all three sensors are on tape simultaneously. During normal following along the thin vertical line, only one or two sensors fire at a time. When the robot crosses the perpendicular hog line (which spans the full sensor array), all three fire together and the robot brakes.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:9rem 1fr;gap:0.6rem 1rem;align-items:start;">
+                <span style="font-weight:600;color:var(--accent);padding-top:0.05rem;">Backup</span>
+                <p style="margin:0;">After braking, the robot waits briefly for momentum to settle, then reverses a short distance. This compensates for the overshoot between detecting the hog line and physically stopping, leaving the robot positioned just before the hog line and ready to release.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:9rem 1fr;gap:0.6rem 1rem;align-items:start;">
+                <span style="font-weight:600;color:var(--accent);padding-top:0.05rem;">Puck Release</span>
+                <p style="margin:0;">Two gate servos open to release the puck. The gate holds open for several seconds to ensure the puck clears the mechanism, then closes. The robot remains stationary throughout, then pauses briefly before beginning the return journey.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:9rem 1fr;gap:0.6rem 1rem;align-items:start;">
+                <span style="font-weight:600;color:var(--accent);padding-top:0.05rem;">Return</span>
+                <p style="margin:0;">The robot reverses along the same tape line using the same PD controller with the error sign flipped to account for backward driving. It follows the tape in reverse at moderate speed until it reaches the loading zone, where it stops.</p>
+              </div>
             </div>
           </div>
 
@@ -1006,6 +1020,12 @@
                 <p class="img-cap">Figure 12 — Full assembly circuit diagram</p>
               </div>
             </div>
+          </div>
+
+          <div class="sub">
+            <h4>Final Robot</h4>
+            <img src="photos/FinalRobotIsometric.png" alt="Final robot isometric view" class="site-img" style="max-height:520px;object-fit:contain;background:var(--surface-1);" />
+            <p class="img-cap" style="text-align:center;">Figure 13 — Final robot, isometric view</p>
           </div>
 
           <div class="sub">
