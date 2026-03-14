@@ -319,6 +319,7 @@
           "img1"
           "img2";
       }
+      .ir-bottom-row { flex-direction: column !important; }
     }
 
     /* ── STATE MACHINE ── */
@@ -829,22 +830,26 @@
           <div class="sub">
             <h4>Prototype Evolution</h4>
             <p style="margin-bottom:1rem;">The circuit went through two major revisions as noise and sensitivity issues were discovered in testing.</p>
-            <div class="grid-2" style="margin-bottom:var(--gap);">
-              <div>
+            <div style="display:flex;flex-direction:column;gap:var(--gap);">
+              <!-- Row 1: Initial Circuit alone, capped so it doesn't overpower -->
+              <div class="img-wide">
                 <h4 style="margin-bottom:0.5rem;">Initial Circuit</h4>
                 <img src="photos/InitialIRCircuit.png" alt="Initial IR detection circuit schematic" class="site-img" />
                 <p class="img-cap">Figure 8 — Initial IR detection circuit schematic</p>
               </div>
-              <div>
-                <h4 style="margin-bottom:0.5rem;">Mounted IR Sensor</h4>
-                <img src="photos/MountedIR.jpg" alt="Mounted IR sensor on robot" class="site-img" />
-                <p class="img-cap">Figure 9 — Mounted IR sensor on robot</p>
+              <!-- Row 2: Mounted sensor + final sensor side by side at natural proportions -->
+              <div class="ir-bottom-row" style="display:flex;gap:var(--gap);align-items:flex-start;">
+                <div style="flex:1;">
+                  <h4 style="margin-bottom:0.5rem;">Mounted IR Sensor</h4>
+                  <img src="photos/MountedIR.jpg" alt="Mounted IR sensor on robot" class="site-img" />
+                  <p class="img-cap">Figure 9 — Mounted IR sensor on robot</p>
+                </div>
+                <div style="flex:1;">
+                  <h4 style="margin-bottom:0.5rem;">Final IR Sensor</h4>
+                  <img src="photos/finalIRSensor.png" alt="Final IR sensor build" class="site-img" />
+                  <p class="img-cap">Figure 10 — Final IR sensor assembly</p>
+                </div>
               </div>
-            </div>
-            <div class="img-narrow" style="margin-top:var(--gap);">
-              <h4 style="margin-bottom:0.5rem;">Final IR Sensor</h4>
-              <img src="photos/finalIRSensor.png" alt="Final IR sensor build" class="site-img" />
-              <p class="img-cap">Figure 10 — Final IR sensor assembly</p>
             </div>
           </div>
 
