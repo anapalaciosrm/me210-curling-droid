@@ -271,32 +271,43 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.25rem;
+      align-items: start;
     }
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
+      align-items: start;
     }
+
     /* ── APPROACH LAYOUT ── */
     .approach-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: auto 1fr;
       grid-template-areas:
         "text  img1"
         "img2  img1";
       gap: var(--gap);
-      min-height: 420px;
     }
     .approach-text { grid-area: text; align-self: start; }
-    .approach-img2 {
-      grid-area: img2;
+    .approach-img2 { grid-area: img2; align-self: start; }
+    .approach-img2 img { width: 100%; height: auto; border-radius: var(--radius-md); display: block; }
+    .approach-img1 { grid-area: img1; }
+    .approach-img1 img { width: 100%; height: auto; border-radius: var(--radius-md); display: block; }
+
+    /* ── IMAGE UTILITIES ── */
+    /* Narrow: for portrait or small standalone images — centers and caps width */
+    .img-narrow {
+      max-width: 420px;
+      margin: 0 auto;
+      text-align: center;
     }
-    .approach-img2 img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); display: block; }
-    .approach-img1 {
-      grid-area: img1;
+    /* Wide: for large featured images — caps at readable width and centers */
+    .img-wide {
+      max-width: 680px;
+      margin: 0 auto;
     }
-    .approach-img1 img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); display: block; }
 
     @media (max-width: 720px) {
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
@@ -308,7 +319,6 @@
           "img1"
           "img2";
       }
-      .approach-img1 img, .approach-img2 img { height: auto; }
     }
 
     /* ── STATE MACHINE ── */
@@ -476,9 +486,11 @@
     /* ── SITE IMAGES ── */
     .site-img {
       width: 100%;
+      height: auto;
       display: block;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-light);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
     .img-cap {
       font-size: 0.72rem;
@@ -570,7 +582,7 @@
           <div class="card-body">
             <h4>System at a Glance</h4>
             <p>The robot reads two IR beacons to determine it is aligned with the field, drives forward tracking the centerline tape, stops at the scoring boundary, and releases pucks down a gravity slide.</p>
-            <img src="photos/FieldDiagram.png" alt="Competition field diagram top-down view" class="site-img" style="margin-top:0.75rem;border:1px solid var(--border);" />
+            <img src="photos/FieldDiagram.png" alt="Competition field diagram top-down view" class="site-img" style="margin-top:0.75rem;" />
             <p class="img-cap">Field layout: beacon positions, tape centerline, and scoring zone</p>
           </div>
         </div>
@@ -593,7 +605,7 @@
         </p>
       </div>
 
-      <div style="margin-bottom: 2rem;">
+      <div class="img-wide" style="margin-bottom:2rem;">
         <img src="photos/StateDiagram.png" alt="Robot finite state machine diagram" class="site-img" />
         <p class="img-cap">Figure 1 — FSM diagram: all states, transitions, and triggering events</p>
       </div>
@@ -765,7 +777,7 @@
               <p>After confirming that the gravity-fed slide concept worked reliably, we refined the design by moving the servos higher and extending the length of the slide. This modification allowed the pucks to settle more smoothly before leaving the ramp and significantly improved their final travel distance toward the target.</p>
               <p>These adjustments resulted in more consistent puck placement while preserving the simplicity of the mechanism, which was a key design priority for rapid testing and iteration.</p>
               <p>Finally, we used a fixed ramp angle to keep the puck trajectory consistent. By tuning the ramp geometry rather than relying on active control, we were able to achieve repeatable puck placement while keeping the subsystem mechanically simple.</p>
-              <div style="margin-top:1rem;">
+              <div class="img-wide" style="margin-top:1rem;">
                 <img src="photos/SecondSlide2.png" alt="Second slide iteration" class="site-img" />
                 <p class="img-cap">Figure 4 — Second slide: servos repositioned higher on the ramp for improved puck trajectory</p>
               </div>
@@ -829,7 +841,7 @@
                 <p class="img-cap">Figure 9 — Mounted IR sensor on robot</p>
               </div>
             </div>
-            <div style="max-width:480px;margin:0 auto;text-align:center;">
+            <div class="img-narrow" style="margin-top:var(--gap);">
               <h4 style="margin-bottom:0.5rem;">Final IR Sensor</h4>
               <img src="photos/finalIRSensor.png" alt="Final IR sensor build" class="site-img" />
               <p class="img-cap">Figure 10 — Final IR sensor assembly</p>
@@ -1017,9 +1029,9 @@
 
           <div class="sub">
             <h4>Final Robot</h4>
-            <div style="width:100%;max-width:640px;margin:0 auto;">
-              <img src="photos/FinalRobotAssembly.png" alt="Final robot assembly" class="site-img" style="width:100%;height:auto;border:1px solid var(--border);" />
-              <p class="img-cap" style="text-align:center;">Figure 13: Final robot assembly</p>
+            <div class="img-wide">
+              <img src="photos/FinalRobotAssembly.png" alt="Final robot assembly" class="site-img" />
+              <p class="img-cap">Figure 13: Final robot assembly</p>
             </div>
           </div>
 
